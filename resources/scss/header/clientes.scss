@@ -1,0 +1,282 @@
+.clients-content {
+    width: 100%;
+    height: 100vh;
+    background-color: #1d2125;
+    display: flex;
+    flex-direction: column;
+    padding-top: 46px;
+
+    .clients-header {
+        width: 100%;
+        height: max-content;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 20px 160px 20px 100px;
+        position: relative;
+        color: #9aa8b7;
+        
+        p {
+            font-family: "Metropolis-Black";
+            font-size: 34px;
+        }
+        .add-client-icon {
+            font-size: 72px;
+            font-weight: bolder;
+            position: absolute;
+            right: 90px;
+            bottom: -6px;
+            &:hover {
+                transition: 300ms;
+                color: #fff;
+                cursor: pointer;
+            }
+            &:not(:hover) {
+                transition: 300ms;
+            }
+        }
+
+        input {
+            height: 40px;
+            background-color: #9aa8b7;
+            border-radius: 7px;
+            color: #101204;
+        }
+    }
+}
+
+.clients-right {
+    width: 760px;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    right: 0px;
+    background: linear-gradient(180deg, #0441ab, #00225d);
+    z-index: 6;
+    transition: 1s;
+
+    .form-title {
+        font-family: "Metropolis-Black";
+        font-size: 36px;
+        color: #fff;
+    }
+}
+
+.close-client-icon {
+    font-size: 60px;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    color:#9abaf1;
+    &:hover {
+        transition: 0.5s;
+        cursor: pointer;
+        color: #fff;
+    }
+    &:not(:hover) {
+        transition: 0.5s;
+    }
+}
+
+.client-opacity-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 1s;
+}
+
+.all-clients {
+    width: 100%;
+    height: max-content;
+    box-sizing: border-box;
+    padding-top: 40px;
+    background-color: #1d2125;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.client-container {
+    width: 90%;
+    background-color: #e3f6f5;
+    box-sizing: border-box;
+    padding: 20px 20px 20px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+
+    p {
+        font-family: "Metropolis-Bold";
+        font-size: 20px;
+
+        span {
+            font-family: "Montserrat-ExtraLight";
+            font-size: 18px;
+        }
+    }
+}
+
+.client-info {
+    width: 90%;
+    display: flex;
+    margin-bottom: 40px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-color: #9aa8b7;
+    z-index: 2;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease;
+
+    .client-data {
+        width: 50%;
+        height: 110%;
+        box-sizing: border-box;
+        padding: 10px 20px 20px 20px;
+        display: flex;
+        align-items: flex-start;
+        .client-data-left,
+        .client-data-right {
+            h5 {
+                font-family: "Metropolis-Black";
+                font-size: 22px;
+                margin-bottom: 5px;
+                color: #cfd7e0;
+            }
+
+            h6 {
+                font-family: "Metropolis-Bold";
+                font-size: 18px;
+                color: #9aa8b7;
+                margin-left: 8px;
+
+                span {
+                    font-family: "Montserrat-ExtraLight";
+                    font-size: 16px;
+                    color: #fff;
+                }
+            }
+        }
+
+        .client-data-right {
+            margin-left: 20px;
+        }
+    }
+    .client-docs {
+        width: 50%;
+        height: 100%;
+        background-color: rgb(15, 3, 53);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        box-sizing: border-box;
+        padding: 10px 10px 10px 10px;
+        position: relative;
+
+        h4 {
+            font-family: "Metropolis-Black";
+            font-size: 24px;
+            color: #cfd7e0;
+        }
+
+        .doc-icon {
+            position: absolute;
+            color: #ef7e7e;
+            width: 30px;
+            bottom: 20px;
+            right: 20px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .add-document {
+            width: 350px;
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            background-color: red;
+            bottom: 35px;
+            right: 60px;
+            z-index: 8;
+            box-sizing: border-box;
+            padding: 0px 15px 15px 15px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-top-right-radius: 20px;
+            label {
+                font-family: "Montserrat-ExtraLight";
+                color: #fff;
+                margin-bottom: 5px;
+                margin-top: 10px;
+                font-size: 18px;
+            }
+
+            .doc-text {
+                height: 50px;
+            }
+
+            .upload-doc {
+                width: 30px;
+                height: 30px;
+            }
+
+            input {
+                background-color: #cfd7e0;
+                border-radius: 8px;
+            }
+        }
+    }
+}
+
+.icon-container {
+    width: 70px;
+    height: 100%;
+    position: absolute;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0px;
+    top: 0px;
+    transition: 0.5s;
+    background-image: linear-gradient(
+        to left bottom,
+        #28f4f9,
+        #00d6ff,
+        #00b2ff,
+        #0083ff,
+        #7132fe
+    );
+    .arrow-icon {
+        font-size: 50px;
+        rotate: -90deg;
+        color: #e3f6f5;
+
+        &:hover {
+            transition: 0.5s;
+            rotate: 90deg;
+            cursor: pointer;
+        }
+        &:not(:hover) {
+            transition: 0.5s;
+        }
+    }
+}

@@ -1,0 +1,130 @@
+.create-cliente-component {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 12px 20px 12px 20px;
+        border-radius: 15px;
+        background-color: $bg;
+        margin-top: 10px;
+
+        p {
+            font-family: "Metropolis-Bold";
+            font-size: 16px;
+            color: #fff;
+        }
+
+        &:hover {
+            transition: 0.5s;
+            cursor: pointer;
+            background-color: #9abaf1;
+            p {
+                color: #1d2125;
+            }
+        }
+        &:not(:hover) {
+            transition: 0.5s;
+        }
+    }
+}
+
+.form-inputs-container {
+    width: 78%;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+
+    label {
+        width: 100%;
+        font-size: 16px;
+        font-family: "Montserrat-ExtraLight";
+        margin-top: 20px;
+        color: #fff;
+    }
+
+    .label-endereco {
+        font-family: "Montserrat-Bold";
+        font-size: 20px;
+    }
+
+    input,
+    select {
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        color: #000;
+        font-size: 14px;
+        font-family: "Montserrat-ExtraLight";
+        background-color: #e3e3e3;
+        &:placeholder-shown {
+            color: #a3a3a3;
+        }
+    }
+    select {
+        option {
+            padding: 5px 5px 5px 5px;
+        }
+    }
+
+    input:focus {
+        border: 1px solid;
+        border-color: red;
+        transition: border-color 0.3s ease-out;
+    }
+}
+
+.form-inputs-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.cliente-endereco-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .endereco-section {
+        display: flex;
+        flex-direction: column;
+        h6 {
+            font-size: 16px;
+            font-family: "Montserrat-ExtraLight";
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        input {
+            width: 100%;
+        }
+    }
+
+    .primeiro {
+        width: 30%;
+    }
+    .segundo {
+        width: 65%;
+    }
+    .terceiro {
+        width: 70%;
+    }
+    .quarto {
+        width: 24%;
+    }
+    .quinto {
+        width: 45%;
+    }
+    .sexto {
+        width: 45%;
+    }
+}
