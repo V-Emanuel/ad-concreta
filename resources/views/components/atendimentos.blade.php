@@ -13,6 +13,7 @@
         <h2>({{ $ramo->nome }})</h2>
         @endif
         @endforeach
+        <h2>Cel: {{ $atendimento->celular }}</h2>
         <span></span>
         <h3>{{ $atendimento->updated_at->format('d / m / Y - H:i') }}</h3>
         <div class="appointment-icon">+</div>

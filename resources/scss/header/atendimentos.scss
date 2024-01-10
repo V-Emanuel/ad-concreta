@@ -67,24 +67,25 @@
 
         li {
             width: 190px;
-            height: 120px;
+            height: 140px;
             display: flex;
             flex-direction: column;
-            background-color: #fff;
-            color: #000;
+            background-color: #936711;
+            background-image: url($bg_card);
+            color: #fffff3;
             margin: 10px 10px 10px 10px;
             box-sizing: border-box;
             padding: 5px 15px 15px 10px;
             position: relative;
 
             h1 {
-                font-family: "Metropolis-Bold";
+                font-family: "Metropolis-Black";
                 flex-wrap: wrap;
                 font-size: 16px;
             }
             h2 {
-                font-family: "Montserrat-ExtraLight";
-                font-size: 11px;
+                font-family: "Montserrat-Bold";
+                font-size: 12px;
             }
 
             h3 {
@@ -102,14 +103,9 @@
                 position: absolute;
                 bottom: 0px;
                 left: 0px;
-                background-image: linear-gradient(
-                    to left bottom,
-                    #28f4f9,
-                    #00d6ff,
-                    #00b2ff,
-                    #0083ff,
-                    #7132fe
-                );
+                background-color: #000;
+                border-bottom-width: 1px;
+                border-color: $gray;
             }
 
             .appointment-icon {
@@ -121,7 +117,7 @@
                 color: #fff;
                 &:hover {
                     transition: 0.5s;
-                    color: $bg;
+                    color: #cd9933;
                     cursor: pointer;
                 }
                 &:not(:hover) {
@@ -136,7 +132,7 @@
                 flex-wrap: wrap;
                 height: max-content;
                 position: absolute;
-                top: 120px;
+                top: 140px;
                 left: 0px;
                 z-index: 3;
                 box-sizing: border-box;
@@ -144,8 +140,8 @@
                 border-top-right-radius: 20px;
                 border-bottom-left-radius: 20px;
                 border-bottom-right-radius: 20px;
-                background: linear-gradient(180deg, #2929ec, #19197b);
-                color: #fff;
+                background-color: #ffffe3;
+                color: $bg;
                 text-align: start;
                 transition: 1s;
             }
@@ -166,7 +162,15 @@
     align-items: center;
     position: fixed;
     right: 0px;
-    background-color: #19197b;
+    
+    background-image: linear-gradient(
+        to right top,
+        #583702,
+        #84560d,
+        #aa7a28,
+        #ae7923,
+        #e19729
+    );
     z-index: 6;
     transition: 1s;
     .form-title {
@@ -176,15 +180,15 @@
         font-size: 40px;
     }
     .close-register-icon {
-        font-size: 40px;
+        font-size: 50px;
         position: absolute;
-        top: 20px;
+        top: 10px;
         left: 20px;
         color: #fff;
         border-radius: 5px;
         &:hover {
             transition: 300ms;
-            color: #3cf2ec;
+            color: #583702;
             cursor: pointer;
         }
         &:not(:hover) {
