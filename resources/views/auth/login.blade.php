@@ -5,8 +5,9 @@
 
         <div class="auth-left-content">
             <div class="vinicius-svg">
-                <x-viniciusguimaraes />
+                <x-vgnome />
             </div>
+            <h1>ADVOGADOS ASSOCIADOS</h1>
         </div>
 
         <form method="POST" action="{{ route('login') }}">
