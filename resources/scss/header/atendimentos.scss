@@ -1,0 +1,289 @@
+.appointments-content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    box-sizing: border-box;
+    padding-top: 46px;
+    padding-right: 280px;
+}
+
+.appointments-left {
+    width: 100%;
+    height: 100%;
+    padding-top: 40px;
+    background-color: #101204;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    .appointments-header {
+        display: flex;
+        width: 90%;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        box-sizing: border-box;
+        padding-right: 80px;
+        color: #9aa8b7;
+        p {
+            font-family: "Metropolis-Black";
+            font-size: 32px;
+        }
+        .add-register-icon {
+            font-size: 72px;
+            font-weight: bolder;
+            position: absolute;
+            right: 10px;
+            bottom: -28px;
+            &:hover {
+                transition: 300ms;
+                color: #fff;
+                cursor: pointer;
+            }
+            &:not(:hover) {
+                transition: 300ms;
+            }
+        }
+        input {
+            background-color: #9aa8b7;
+            border-radius: 7px;
+            color: #101204;
+        }
+    }
+    ul {
+        width: 100%;
+        max-height: 95%;
+        box-sizing: border-box;
+        padding-bottom: 200px;
+        padding-left: 40px;
+        padding-right: 40px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow-y: auto;
+
+        li {
+            width: 190px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            color: #000;
+            margin: 10px 10px 10px 10px;
+            box-sizing: border-box;
+            padding: 5px 15px 15px 10px;
+            position: relative;
+
+            h1 {
+                font-family: "Metropolis-Bold";
+                flex-wrap: wrap;
+                font-size: 16px;
+            }
+            h2 {
+                font-family: "Montserrat-ExtraLight";
+                font-size: 11px;
+            }
+
+            h3 {
+                width: 100%;
+                position: absolute;
+                bottom: 5px;
+                font-family: "Montserrat-Bold";
+                font-size: 12px;
+                color: #fff;
+            }
+
+            span {
+                width: 100%;
+                height: 28px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                background-image: linear-gradient(
+                    to left bottom,
+                    #28f4f9,
+                    #00d6ff,
+                    #00b2ff,
+                    #0083ff,
+                    #7132fe
+                );
+            }
+
+            .appointment-icon {
+                position: absolute;
+                right: 4px;
+                bottom: -10px;
+                font-size: 34px;
+                font-weight: bolder;
+                color: #fff;
+                &:hover {
+                    transition: 0.5s;
+                    color: $bg;
+                    cursor: pointer;
+                }
+                &:not(:hover) {
+                    transition: 0.5s;
+                }
+            }
+
+            p {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                width: 240px;
+                flex-wrap: wrap;
+                height: max-content;
+                position: absolute;
+                top: 120px;
+                left: 0px;
+                z-index: 3;
+                box-sizing: border-box;
+                padding: 10px 10px 10px 10px;
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                background: linear-gradient(180deg, #2929ec, #19197b);
+                color: #fff;
+                text-align: start;
+                transition: 1s;
+            }
+        }
+    }
+    ul::-webkit-scrollbar {
+        width: 10px;
+    }
+}
+
+.appointments-right {
+    width: 760px;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    right: 0px;
+    background-color: #19197b;
+    z-index: 6;
+    transition: 1s;
+    .form-title {
+        margin-bottom: 30px;
+        font-family: "Metropolis-Black";
+        color: #fff;
+        font-size: 40px;
+    }
+    .close-register-icon {
+        font-size: 40px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: #fff;
+        border-radius: 5px;
+        &:hover {
+            transition: 300ms;
+            color: #3cf2ec;
+            cursor: pointer;
+        }
+        &:not(:hover) {
+            transition: 300ms;
+        }
+    }
+}
+
+.active-x {
+    transform: translateX(0%);
+}
+
+.active-opacity {
+    transform: scale(1);
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.no-active-x {
+    transform: translateX(100%);
+}
+
+.no-active-opacity {
+    transform: scale(0);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.active-register-content {
+    transform: scale(1) translate(0%, 0%);
+}
+
+.no-active-register-content {
+    transform: scale(0) translate(-100%, -100%);
+}
+
+.opacity-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 1s;
+}
+
+.filter-column {
+    position: fixed;
+    background-color: #101204;
+    border-width: 1px;
+    border-top: transparent;
+    border-right: transparent;
+    border-color: transparent;
+    border-color: #9aa8b7;
+    width: 280px;
+    height: 100%;
+    right: 0px;
+    box-sizing: border-box;
+    padding-top: 40px;
+    padding-left: 20px;
+    color: #9aa8b7;
+    p {
+        font-family: "Metropolis-Black";
+        font-size: 26px;
+    }
+
+    h1 {
+        font-family: "Montserrat-ExtraLight";
+        font-size: 18px;
+        margin-bottom: 5px;
+        margin-top: 30px;
+    }
+    .filter-line {
+        width: 220px;
+        height: 1px;
+        background-color: #9aa8b7;
+        margin-bottom: 10px;
+    }
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+        input {
+            margin-right: 6px;
+            border-radius: 4px;
+        }
+        h3 {
+            font-family: "Montserrat-ExtraLight";
+            font-size: 14px;
+        }
+    }
+}
+
+.date-filter-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    input {
+        border-radius: 5px;
+        background-color: #9aa8b7;
+        color: #101204;
+    }
+}

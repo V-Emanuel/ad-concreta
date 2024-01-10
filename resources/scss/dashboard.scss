@@ -1,0 +1,10 @@
+@import "./variables";
+
+.dashboard-container {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    padding-top: 50px;
+    background-color: $bg;
+    background-image: url($bg_svg);
+}

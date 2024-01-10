@@ -1,0 +1,61 @@
+.create-atendimento-component {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    label {
+        font-size: 16px;
+        font-family: "Montserrat-ExtraLight";
+        margin-top: 10px;
+        color: #fff;
+    }
+    input,
+    select {
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        color: #000;
+        font-size: 14px;
+        font-family: "Montserrat-ExtraLight";
+        background-color: #e3e3e3;
+        &:placeholder-shown {
+            color: #a3a3a3;
+        }
+    }
+    input:focus {
+        border: 1px solid;
+        border-color: aquamarine;
+        transition: border-color 0.3s ease-out;
+    }
+
+    .button-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        button {
+            box-sizing: border-box;
+            padding: 10px 18px 10px 18px;
+            border-radius: 8px;
+            background-color: #080902;
+            color: #fff;
+            font-family: "Metropolis-Bold";
+
+            &:hover {
+                transition: 300ms;
+                cursor: pointer;
+                background-color: #9aa8b7;
+                color: #080902;
+            }
+
+            &:not(:hover) {
+                transition: 300ms;
+            }
+        }
+    }
+}
+
+#texto-atendimento {
+    height: 170px;
+    flex-wrap: wrap;
+}

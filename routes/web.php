@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/clients', [HeaderViewsController::class, 'clientsView'])->middleware(['auth', 'verified'])->name('clients');
-Route::get('/appointments', [HeaderViewsController::class, 'appointmentsView'])->middleware(['auth', 'verified'])->name('appointments');
+Route::get('/clientes', [HeaderViewsController::class, 'clientsView'])->middleware(['auth', 'verified'])->name('clientes');
+Route::get('/atendimentos', [HeaderViewsController::class, 'appointmentsView'])->middleware(['auth', 'verified'])->name('atendimentos');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

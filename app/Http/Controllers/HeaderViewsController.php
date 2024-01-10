@@ -18,7 +18,7 @@ class HeaderViewsController extends Controller
         $cidades = Cidade::all();
         $ramos = Ramo::all();
 
-        return view("appointments", compact("atendimentos", "cidades", "ramos"));
+        return view("header.atendimentos", compact("atendimentos", "cidades", "ramos"));
     }
 
     public function clientsView()
@@ -27,6 +27,6 @@ class HeaderViewsController extends Controller
         $cidades = Cidade::all();
         $ramos = Ramo::all();
 
-        return view("clients", compact("clientes", "cidades", "ramos"));
+        return view("header.clientes", compact("clientes", "cidades", "ramos"));
     }
 }
