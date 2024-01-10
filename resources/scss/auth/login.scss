@@ -1,0 +1,106 @@
+@import "../variables";
+
+.auth-container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+        url("../assets/imgs/bg.jpg") center center no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .auth-left-content{
+        width: 65%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .vinicius-svg{
+            width: 70%;
+        }
+    }
+
+    form {
+        width: 32%;
+        height: 84%;
+        background: transparent;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 30px;
+        margin-right: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 80px 60px 40px 60px;
+        position: relative;
+
+        p {
+            font-family: "Metropolis-Black";
+            font-size: 44px;
+            color: $gray;
+        }
+
+        label {
+            width: 100%;
+            font-family: "Montserrat-ExtraLight";
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .login-input {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            background-color: #a3a3a3;
+
+            &:focus{
+                border-color: rgb(85, 109, 124);
+            }
+        }
+
+        .vg-svg {
+            width: 60px;
+            position: absolute;
+            bottom: 24px;
+            right: 20px;
+        }
+
+        .remember-container{
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .auth-button-container{
+            font-family: "Montserrat-ExtraLight";
+            font-size: 16px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            a{
+                border-bottom-width: 1px;
+                border-color: transparent;
+                margin-bottom: 90px;
+                &:hover{
+                    transition: 0.5s;
+                    border-color: #fff;
+
+                }
+            }
+
+            button{
+                box-sizing: border-box;
+                padding: 8px 30px 8px 30px;
+                border-radius: 8px;
+                background-color: $vg;
+                color: $bg;
+                font-family: 'Metropolis-Bold';
+                font-size: 24px;
+            }
+        }
+    }
+}
