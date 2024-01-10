@@ -10,105 +10,159 @@
     align-items: center;
     justify-content: space-between;
 
-    .auth-left-content{
+    .auth-left-content {
         width: 65%;
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        .vinicius-svg{
-            width: 70%;
+        .vinicius-svg {
+            width: 75%;
             margin-bottom: 12px;
         }
-        h1{
+        h1 {
             color: #fff;
             font-size: 32px;
-            font-family: 'Futura-Medium';
+            font-family: "Futura-Medium";
             letter-spacing: 8px;
         }
     }
 
-    form {
+    .auth-right-content {
         width: 32%;
-        height: 84%;
-        background: transparent;
-        backdrop-filter: blur(10px);
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        border-radius: 30px;
-        margin-right: 50px;
+        height: 100%;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        box-sizing: border-box;
-        padding: 80px 60px 40px 60px;
+        justify-content: center;
         position: relative;
 
-        p {
-            font-family: "Metropolis-Black";
-            font-size: 44px;
-            color: $gray;
-        }
-
-        label {
-            width: 100%;
-            font-family: "Montserrat-ExtraLight";
-            font-size: 20px;
-            color: #fff;
-        }
-
-        .login-input {
-            width: 100%;
-            margin-bottom: 20px;
-            border-radius: 6px;
-            background-color: #a3a3a3;
-
-            &:focus{
-                border-color: rgb(85, 109, 124);
-            }
-        }
-
-        .vg-svg {
-            width: 60px;
-            position: absolute;
-            bottom: 24px;
-            right: 20px;
-        }
-
-        .remember-container{
-            color: #fff;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .auth-button-container{
-            font-family: "Montserrat-ExtraLight";
-            font-size: 16px;
-            color: #fff;
+        form {
+            width: 32%;
+            height: 84%;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            a{
+            box-sizing: border-box;
+            padding: 80px 60px 40px 60px;
+            transition:0.5s;
+            position: fixed;
+            right: 40px;
+            z-index: 6;
+
+            p {
+                font-family: "Metropolis-Black";
+                font-size: 44px;
+                color: $gray;
+            }
+
+            h2 {
+                font-family: "Montserrat-ExtraLight";
+                font-size: 18px;
+                color: #fff;
+                text-align: center;
+                margin-top: 16px;
+                margin-bottom: 40px;
+            }
+
+            h4 {
+                font-family: "Montserrat-ExtraLight";
+                font-size: 18px;
+                color: #fff;
+                position: absolute;
+                left: 40px;
+                bottom: 24px;
                 border-bottom-width: 1px;
                 border-color: transparent;
-                margin-bottom: 90px;
-                &:hover{
+
+                &:hover {
                     transition: 0.5s;
                     border-color: #fff;
-
+                    cursor: pointer;
                 }
             }
 
-            button{
-                box-sizing: border-box;
-                padding: 8px 30px 8px 30px;
-                border-radius: 8px;
-                background-color: $vg;
-                color: $bg;
-                font-family: 'Metropolis-Bold';
-                font-size: 24px;
+            label {
+                width: 100%;
+                font-family: "Montserrat-ExtraLight";
+                font-size: 20px;
+                color: #fff;
+            }
+
+            .auth-input {
+                width: 100%;
+                margin-bottom: 20px;
+                border-radius: 6px;
+                background-color: #a3a3a3;
+
+                &:focus {
+                    border-color: rgb(85, 109, 124);
+                }
+            }
+
+            .vg-svg {
+                width: 60px;
+                position: absolute;
+                bottom: 24px;
+                right: 20px;
+            }
+
+            .remember-container {
+                color: #fff;
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .auth-button-container {
+                font-family: "Montserrat-ExtraLight";
+                font-size: 16px;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                a {
+                    border-bottom-width: 1px;
+                    border-color: transparent;
+                    margin-bottom: 30px;
+                    &:hover {
+                        transition: 0.5s;
+                        border-color: #fff;
+                        cursor: pointer;
+                    }
+                }
+
+                button {
+                    box-sizing: border-box;
+                    padding: 8px 30px 8px 30px;
+                    border-radius: 8px;
+                    background-color: $vg;
+                    color: $bg;
+                    font-family: "Metropolis-Bold";
+                    font-size: 24px;
+                    margin-top: 90px;
+                    &:hover {
+                        transition: 0.2s;
+                        cursor: pointer;
+                        background-color: $gray;
+                    }
+                    &:not(:hover){
+                        transition: 0.3s;
+                    }
+                }
             }
         }
     }
+}
+
+.show-form {
+    transform: translateX(0%);
+}
+
+.hide-form {
+    transform: translateX(120%);
 }
