@@ -19,7 +19,7 @@
                     <div class="arrow-icon">➠</div>
                 </div>
             </div>
-            <div class="client-info">
+            <div class="searchable-info client-info">
                 <div class="client-data">
                     <div class="client-data-left">
                         <h6>Nome da Mãe: <span>{{$cliente->nome_mae}}</span></h6>
@@ -53,12 +53,14 @@
                         <label>Nome Do Arquivo:<span style="color: red"> *</span></label>
                         <input placeholder="nome" name="nome" required type="text">
                         <label>Descrição:<span style="color: red"> *</span></label>
-                        <input placeholder="Descrição" name="descricao" required type="text" class="doc-text">
+                        <input placeholder="Descrição" name="descricao" required type="text">
                         <div class="upload-doc">JORGE</div>
                         <button type="submit">
                         </button>
                     </fonm>
-                    <div class="doc-icon"></div>
+                    <div class="add-pdf-icon">
+                        <x-add-pdf class="jorge"/>
+                    </div>
                 </div>
             </div>
             @endforeach
@@ -100,17 +102,21 @@
             let searchResults = document.getElementById('searchClients');
             let items = searchResults.getElementsByClassName('searchable-div');
             let names = searchResults.getElementsByClassName('searchable-name');
+            let infos = searchResults.getElementsByClassName('searchable-info');
 
             for (let i = 0; i < items.length; i++) {
                 let name = names[i];
                 let item = items[i];
+                let info = infos[i];
 
                 let textContent = name.textContent || name.innerText;
 
                 if (textContent.toLowerCase().includes(searchTerm)) {
                     item.style.display = 'block';
+                    info.style.display = 'block';
                 } else {
                     item.style.display = 'none';
+                    info.style.display = 'none';
                 }
             }
         });

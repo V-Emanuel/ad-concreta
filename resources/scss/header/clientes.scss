@@ -193,13 +193,12 @@
             color: #cfd7e0;
         }
 
-        .doc-icon {
+        .add-pdf-icon {
             position: absolute;
-            color: #ef7e7e;
             width: 30px;
+            height: 30px;
             bottom: 20px;
             right: 20px;
-
             &:hover {
                 cursor: pointer;
             }
@@ -225,7 +224,7 @@
                 color: #fff;
                 margin-bottom: 5px;
                 margin-top: 10px;
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .doc-text {
@@ -239,7 +238,8 @@
 
             input {
                 background-color: #cfd7e0;
-                border-radius: 8px;
+                height: 40px;
+                border-radius: 5px;
             }
         }
     }
