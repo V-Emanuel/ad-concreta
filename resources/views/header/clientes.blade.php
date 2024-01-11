@@ -19,7 +19,7 @@
                     <div class="arrow-icon">➠</div>
                 </div>
             </div>
-            <div class="searchable-info client-info">
+            <div class="client-info searchable-info">
                 <div class="client-data">
                     <div class="client-data-left">
                         <h6>Nome da Mãe: <span>{{$cliente->nome_mae}}</span></h6>
@@ -48,18 +48,21 @@
                 </div>
                 <div class="client-docs">
                     <h4>Documentos :</h4>
-                    <fonm class="add-document" method="POST" action="{{ route('cliente.post') }}">
+                    <div class="add-pdf-icon">
+                        <x-add-pdf />
+                    </div>
+                    <div class="add-document-container close-document">
+                    <form method="POST" action="{{ route('cliente.post') }}">
                         @csrf
-                        <label>Nome Do Arquivo:<span style="color: red"> *</span></label>
-                        <input placeholder="nome" name="nome" required type="text">
-                        <label>Descrição:<span style="color: red"> *</span></label>
+                        <input placeholder="Nome do Arquivo" name="nome" required type="text">
                         <input placeholder="Descrição" name="descricao" required type="text">
-                        <div class="upload-doc">JORGE</div>
+                        <label for="upload" class="input-pdf-label">Escolha um arquivo PDF<div class="upload-svg">
+                                <x-upload />
+                            </div></label>
+                        <input id="upload" class="input-pdf" type="file" name="upload" accept="application/pdf" />
                         <button type="submit">
                         </button>
-                    </fonm>
-                    <div class="add-pdf-icon">
-                        <x-add-pdf class="jorge"/>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -71,6 +74,15 @@
 <script>
 
     document.addEventListener('DOMContentLoaded', function () {
+
+        document.querySelectorAll('.add-pdf-icon').forEach(function (icon) {
+        icon.addEventListener('click', function () {
+            let addDocumentForm = document.querySelector('.add-document-container');
+            addDocumentForm.classList.toggle('close-document');
+            addDocumentForm.classList.toggle('open-document');
+        });
+    });
+
         document.querySelectorAll('.add-client-icon').forEach(function (icon) {
             icon.addEventListener('click', function () {
                 let appointmentsRight = document.querySelector('.clients-right');
@@ -80,7 +92,6 @@
                 appointmentsRight.classList.toggle('no-active-x');
                 opacityBg.classList.toggle('active-opacity');
                 opacityBg.classList.toggle('no-active-opacity');
-
             });
         });
 
@@ -93,9 +104,9 @@
                 appointmentsRight.classList.toggle('no-active-x');
                 opacityBg.classList.toggle('active-opacity');
                 opacityBg.classList.toggle('no-active-opacity');
-
             });
         });
+
 
         document.getElementById('searchInput').addEventListener('input', function () {
             let searchTerm = this.value.toLowerCase();

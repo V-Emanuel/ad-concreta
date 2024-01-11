@@ -52,4 +52,24 @@ class ClientController extends Controller
 
         return redirect()->route('clients')->with('success', 'Cliente cadastrado com sucesso!');
     }
+
+    public function updateDcoument(Request $request)
+    {
+
+        $data = $request->all();
+
+        $cliente = Cliente::find($data['id']);
+
+        $document = [
+            'nome'=> $data['nome'],
+            'descricao'=> $data['descricao'] ,
+            'url_s3'=> $data['url_s3'],
+        ];
+
+        $cliente->documentos = array_merge($cliente->documentos, $document);
+
+        $cliente->save();
+
+        return redirect()->route('clients')->with('success', 'Cliente cadastrado com sucesso!');
+    }
 }

@@ -17,7 +17,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-100 overflow-y-scroll scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
