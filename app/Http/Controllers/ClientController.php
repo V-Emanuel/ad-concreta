@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Services\S3Service;
 
 class ClientController extends Controller
 {
+    use S3Service;
     public function create(Request $request)
     {
 
@@ -21,18 +23,18 @@ class ClientController extends Controller
         }
 
         $endereco = [
-            'cep'=> $data['cep'] ?? 'null',
-            'rua'=> $data['rua'] ,
-            'bairro'=> $data['bairro'] ?? 'null',
-            'numero'=> $data['numero'] ?? 'null',
-            'cidade'=> $data['cidade'] ?? 'null',
-            'estado'=> $data['estado'] ?? 'null' ,
+            'cep' => $data['cep'] ?? 'null',
+            'rua' => $data['rua'],
+            'bairro' => $data['bairro'] ?? 'null',
+            'numero' => $data['numero'] ?? 'null',
+            'cidade' => $data['cidade'] ?? 'null',
+            'estado' => $data['estado'] ?? 'null',
         ];
 
         $cliente = new Cliente([
-            'nome' => $data['nome']  ?? 'null',
-            'situacao' => $data['situacao']  ?? 'null',
-            'celular' => $data['celular']  ?? 'S/N',
+            'nome' => $data['nome'] ?? 'null',
+            'situacao' => $data['situacao'] ?? 'null',
+            'celular' => $data['celular'] ?? 'S/N',
             'naturalidade' => $data['naturalidade'] ?? 'null',
             'estado_civil' => $data['estado_civil'] ?? 'null',
             'profissao' => $data['profissao'] ?? 'null',
@@ -43,9 +45,9 @@ class ClientController extends Controller
             'nascimento' => $data['nascimento'] ?? 'null',
             'cidade_nascimento' => $data['cidade_nascimento'] ?? 'null',
             'estado_nascimento' => $data['estado_nascimento'] ?? 'null',
-            'endereco' =>  $endereco,
-            'documentos' => [], 
-            'observacoes' => [], 
+            'endereco' => $endereco,
+            'documentos' => [],
+            'observacoes' => [],
         ]);
 
         $cliente->save();
@@ -53,23 +55,35 @@ class ClientController extends Controller
         return redirect()->route('clients')->with('success', 'Cliente cadastrado com sucesso!');
     }
 
-    public function updateDcoument(Request $request)
+    public function updateDocument(Request $request)
     {
+
+        if(empty($request->documento)){
+            return redirect()->route('clientes')->with('success', 'Favor Selecionar um documento');
+        }
 
         $data = $request->all();
 
-        $cliente = Cliente::find($data['id']);
+        $cliente = Cliente::find($data['cliente_id']);
+
+        $nomeArquivo = uniqid() . '.' . $request->documento->getClientOriginalExtension();
+
+        $request->documento->storeAs('public/documentos', $nomeArquivo);
+
+        $pathArquivo = storage_path() . '\app\public\documentos\\' . $nomeArquivo;
+
+        $url = $this->uploadToS3($request->file('documento'), $pathArquivo);
 
         $document = [
-            'nome'=> $data['nome'],
-            'descricao'=> $data['descricao'] ,
-            'url_s3'=> $data['url_s3'],
+            'nome' => $data['nome'],
+            'descricao' => $data['descricao'],
+            'url' => $url,
         ];
 
         $cliente->documentos = array_merge($cliente->documentos, $document);
 
         $cliente->save();
 
-        return redirect()->route('clients')->with('success', 'Cliente cadastrado com sucesso!');
+        return redirect()->route('clientes')->with('success', 'Cliente cadastrado com sucesso!');
     }
 }

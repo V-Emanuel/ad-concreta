@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Traits;
+namespace App\Services;
 
 use Aws\S3\S3Client;
 
 trait S3Service
 {
-    public function uploadToS3($file, $directory = 'documentos')
+    public function uploadToS3($file, $pathArquivo, $directory = 'documentos')
     {
+
+
         $s3 = new S3Client([
             'version' => 'latest',
             'region' => config('filesystems.disks.s3.region'),
@@ -19,10 +21,12 @@ trait S3Service
 
         $path = $directory . '/' . uniqid() . '.' . $file->getClientOriginalExtension();
 
+        // dd('pora', fopen( $pathArquivo, 'r'));
+
         $s3->putObject([
             'Bucket' => config('filesystems.disks.s3.bucket'),
             'Key' => $path,
-            'Body' => fopen($file->path(), 'rb'),
+            'Body' => fopen($pathArquivo, 'rb'),
             'ACL' => 'public-read',
         ]);
 

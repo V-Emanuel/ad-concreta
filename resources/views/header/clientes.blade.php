@@ -51,18 +51,21 @@
                     <div class="add-pdf-icon">
                         <x-add-pdf />
                     </div>
-                    <div class="add-document-container close-document">
-                    <form method="POST" action="{{ route('cliente.post') }}">
-                        @csrf
-                        <input placeholder="Nome do Arquivo" name="nome" required type="text">
-                        <input placeholder="Descrição" name="descricao" required type="text">
-                        <label for="upload" class="input-pdf-label">Escolha um arquivo PDF<div class="upload-svg">
-                                <x-upload />
-                            </div></label>
-                        <input id="upload" class="input-pdf" type="file" name="upload" accept="application/pdf" />
-                        <button type="submit">
-                        </button>
-                    </form>
+                    <div class="add-document-container close-document document{{ $loop->index }}">
+                        <form method="POST" action="{{ route('cliente.doc') }}" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="cliente_id" value="{{ $cliente->id }}" />
+                            <input placeholder="Nome do Arquivo" name="nome" required type="text">
+                            <input placeholder="Descrição" name="descricao" required type="text">
+                            <label for="upload" class="input-pdf-label">Escolha um arquivo PDF<div class="upload-svg">
+                                    <x-upload />
+                                </div></label>
+                            <input id="upload" class="input-pdf" type="file" name="documento"
+                                accept="application/pdf" />
+                            <button type="submit">
+                                butao
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -75,13 +78,13 @@
 
     document.addEventListener('DOMContentLoaded', function () {
 
-        document.querySelectorAll('.add-pdf-icon').forEach(function (icon) {
-        icon.addEventListener('click', function () {
-            let addDocumentForm = document.querySelector('.add-document-container');
-            addDocumentForm.classList.toggle('close-document');
-            addDocumentForm.classList.toggle('open-document');
+        document.querySelectorAll('.add-pdf-icon').forEach(function (icon, index) {
+            icon.addEventListener('click', function () {
+                let addDocumentForm = document.querySelector('.document' + index);
+                addDocumentForm.classList.toggle('close-document');
+                addDocumentForm.classList.toggle('open-document');
+            });
         });
-    });
 
         document.querySelectorAll('.add-client-icon').forEach(function (icon) {
             icon.addEventListener('click', function () {
