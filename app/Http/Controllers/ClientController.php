@@ -58,7 +58,7 @@ class ClientController extends Controller
     public function updateDocument(Request $request)
     {
 
-        if(empty($request->documento)){
+        if (empty($request->documento)) {
             return redirect()->route('clientes')->with('success', 'Favor Selecionar um documento');
         }
 
@@ -78,9 +78,16 @@ class ClientController extends Controller
             'nome' => $data['nome'],
             'descricao' => $data['descricao'],
             'url' => $url,
+            'type' => $request->documento->getClientOriginalExtension()
         ];
 
-        $cliente->documentos = array_merge($cliente->documentos, $document);
+        $documentos = $cliente->documentos;
+
+        if (!empty($documentos)) {
+            $cliente->documentos = array_merge($cliente->documentos, [$document]);
+        } else {
+            $cliente->documentos = [$document];
+        }
 
         $cliente->save();
 

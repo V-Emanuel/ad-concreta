@@ -51,17 +51,32 @@
                     <div class="add-pdf-icon">
                         <x-add-pdf />
                     </div>
+                    <ul>
+                        @foreach($cliente->documentos as $docs)
+                        <a href="{{$docs['url']}}" target="_blank">
+                            <span>
+                                @if($docs['type'] === 'pdf')
+                                <x-pdf-gray />
+                                @else
+                                <x-image-icon />
+                                @endif
+                            </span>
+                            {{ $docs['nome'] }} <span>({{$docs['descricao']}})</span>
+                        </a>
+                        @endforeach
+                    </ul>
                     <div class="add-document-container close-document document{{ $loop->index }}">
                         <form method="POST" action="{{ route('cliente.doc') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="cliente_id" value="{{ $cliente->id }}" />
-                            <input placeholder="Nome do Arquivo" name="nome" required type="text">
+                            <input placeholder="Nome do Arquivo (sem  acentos)" name="nome" required type="text"
+                                pattern="[A-Za-z0-9]+">
                             <input placeholder="Descrição" name="descricao" required type="text">
                             <label for="upload" class="input-pdf-label">Escolha um arquivo PDF<div class="upload-svg">
                                     <x-upload />
                                 </div></label>
                             <input id="upload" class="input-pdf" type="file" name="documento"
-                                accept="application/pdf" />
+                                accept="image/*, application/pdf" />
                             <button type="submit">
                                 butao
                             </button>

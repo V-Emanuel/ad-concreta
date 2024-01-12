@@ -176,16 +176,45 @@
     .client-docs {
         width: 50%;
         height: 100%;
-        flex-direction: column;
+        display: flex;
         justify-content: flex-start;
         box-sizing: border-box;
         padding: 10px 10px 10px 10px;
         position: relative;
 
         h4 {
+            width: 200px;
             font-family: "Metropolis-Black";
             font-size: 24px;
             color: #cfd7e0;
+        }
+
+        ul{
+            width: 90%;
+            height: max-content;
+            box-sizing: border-box;
+            padding: 35px 15px 15px 16px;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            a{
+                display: flex;
+                margin-bottom: 14px;
+                display: flex;
+                align-items: center;
+                font-family: 'Metropolis-Bold';
+                font-size: 18px;
+
+                span{
+                    font-family: 'Montserrat-ExtraLight';
+                    display: flex;
+                    align-items: center;
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 10px;
+                    margin-left: 8px;
+                }
+            }
         }
 
         .add-pdf-icon {
