@@ -73,9 +73,12 @@
                     @csrf
                     <label for="arquivos">Selecione os documentos:</label>
                     <input type="hidden" name="cliente_id" value="{{ $cliente->id }}" />
-                    <input type="file" class="arquivos" name="arquivos[]" required multiple>
+                    <div class="input-files-container">
+                        <input class="arquivos input-files" type="file" name="arquivos[]" required multiple>
+                        <p>Clique aqui para adicionar os arquivos</p>
+                    </div>
                     <div class="camposExtras"></div>
-                    <input type="submit" value="Enviar">
+                    <input class="input-button" type="submit" value="Enviar">
                 </form>
             </div>
             @endforeach
@@ -135,8 +138,8 @@
                 let textContent = name.textContent || name.innerText;
 
                 if (textContent.toLowerCase().includes(searchTerm)) {
-                    item.style.display = 'block';
-                    info.style.display = 'block';
+                    item.style.display = 'flex';
+                    info.style.display = 'flex';
                 } else {
                     item.style.display = 'none';
                     info.style.display = 'none';
@@ -173,19 +176,18 @@
                 var nomeInput = $('<input>').attr({
                     type: 'text',
                     name: 'nomes[]',
-                    placeholder: 'Nome do arquivo ' + (i + 1)
+                    value: files[i].name
                 });
 
                 var descricaoInput = $('<input>').attr({
                     type: 'text',
                     name: 'descricoes[]',
-                    placeholder: 'Descrição do arquivo ' + (i + 1)
+                    placeholder: 'Descrição'
                 });
 
-                camposExtrasDiv.append(nomeInput).append(descricaoInput).append('<br>');
+                camposExtrasDiv.append(nomeInput).append(descricaoInput);
             }
         });
     });
-
 
 </script>
