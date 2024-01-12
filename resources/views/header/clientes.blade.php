@@ -54,16 +54,19 @@
                     <ul>
                         @foreach($cliente->documentos as $docs)
                         <li>
-                            <a href="{{$docs['url']}}" target="_blank">
-                                @if($docs['type'] === 'pdf')
-                                <x-pdf-gray />
-                                @else
-                                <x-image-icon />
-                                @endif
-                            </a>
-                            {{ $docs['nome'] }} <span>({{$docs['descricao']}})</span>
-                            </a>
-                            @endforeach
+                            <div>
+                                <a href="{{$docs['url']}}" target="_blank">
+                                    @if($docs['type'] === 'pdf')
+                                    <x-pdf-gray />
+                                    @else
+                                    <x-image-icon />
+                                    @endif
+                                </a>
+                                <p>{{ $docs['nome'] }}</p>
+                            </div>
+                            <h6>({{$docs['descricao']}})</h6>
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
 

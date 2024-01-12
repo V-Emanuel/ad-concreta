@@ -140,7 +140,7 @@
     transition: height 0.5s ease;
 
     .client-data {
-        width: 55%;
+        width: 48%;
         height: 110%;
         box-sizing: border-box;
         padding: 10px 20px 20px 20px;
@@ -175,7 +175,7 @@
         }
     }
     .client-docs {
-        width: 45%;
+        width: 52%;
         height: 100%;
         display: flex;
         justify-content: flex-start;
@@ -203,23 +203,32 @@
                 width: 100%;
                 margin-bottom: 14px;
                 display: flex;
-                align-items: center;
+                flex-direction: column;
                 font-family: "Metropolis-Bold";
                 font-size: 18px;
 
-                a,
-                span {
-                    font-family: "Montserrat-ExtraLight";
+                div {
                     display: flex;
-                    align-items: center;
-                    width: 30px;
-                    height: 30px;
-                    margin-right: 10px;
-                    margin-left: 8px;
+                    p{
+                        width: 92%;
+                        flex-wrap: wrap;
+                    }
+                    a {
+                        width: 32px;
+                        height: 32px;
+                        margin-right: 6px;
+                    }
                 }
 
-                span {
-                    width: 100%;
+                h6 {
+                    width: 90%;
+                    font-family: "Montserrat-ExtraLight";
+                    font-size: 14px;
+                    margin-right: 10px;
+                    margin-left: 50px;
+                    margin-bottom: 6px;
+                    box-sizing: border-box;
+                    flex-wrap: wrap;
                 }
             }
         }
@@ -383,7 +392,7 @@
     transform-origin: bottom right;
 }
 
-.input-button{
+.input-button {
     font-family: "Metropolis-Black";
     font-size: 20px;
     box-sizing: border-box;
@@ -392,7 +401,7 @@
     background-color: #044132;
     transition: 0.5s;
 
-    &:hover{
+    &:hover {
         cursor: pointer;
         color: #044132;
         background-color: #73e4c8;
