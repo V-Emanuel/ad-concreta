@@ -140,7 +140,7 @@
     transition: height 0.5s ease;
 
     .client-data {
-        width: 50%;
+        width: 55%;
         height: 110%;
         box-sizing: border-box;
         padding: 10px 20px 20px 20px;
@@ -160,6 +160,7 @@
                 font-size: 18px;
                 color: #9aa8b7;
                 margin-left: 8px;
+                margin-bottom: 4px;
 
                 span {
                     font-family: "Montserrat-ExtraLight";
@@ -174,7 +175,7 @@
         }
     }
     .client-docs {
-        width: 50%;
+        width: 45%;
         height: 100%;
         display: flex;
         justify-content: flex-start;
@@ -189,7 +190,7 @@
             color: #cfd7e0;
         }
 
-        ul{
+        ul {
             width: 90%;
             height: max-content;
             box-sizing: border-box;
@@ -197,22 +198,28 @@
             display: flex;
             flex-direction: column;
             color: #fff;
-            a{
+            li {
                 display: flex;
+                width: 100%;
                 margin-bottom: 14px;
                 display: flex;
                 align-items: center;
-                font-family: 'Metropolis-Bold';
+                font-family: "Metropolis-Bold";
                 font-size: 18px;
 
-                span{
-                    font-family: 'Montserrat-ExtraLight';
+                a,
+                span {
+                    font-family: "Montserrat-ExtraLight";
                     display: flex;
                     align-items: center;
                     width: 30px;
                     height: 30px;
                     margin-right: 10px;
                     margin-left: 8px;
+                }
+
+                span {
+                    width: 100%;
                 }
             }
         }
@@ -229,98 +236,98 @@
                 cursor: pointer;
             }
         }
+    }
+}
 
-        .add-document-container {
-            width: max-content;
-            height: max-content;
-            position: absolute;
-            background-image: linear-gradient(
-                to left bottom,
-                #28f4f9,
-                #00d6ff,
-                #00b2ff,
-                #0083ff,
-                #7132fe
-            );
-            bottom: 35px;
-            right: 60px;
-            z-index: 8;
-            box-sizing: border-box;
-            padding: 15px 15px 15px 15px;
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-            border-top-right-radius: 20px;
-            transition: 0.5s;
-            form {
-                flex-direction: column;
-                display: flex;
-            }
-            label {
-                font-family: "Montserrat-ExtraLight";
-                color: #fff;
-                margin-bottom: 5px;
-                margin-top: 10px;
-                font-size: 16px;
-            }
+.add-document-container {
+    width: 80%;
+    height: max-content;
+    position: fixed;
+    background-image: linear-gradient(
+        to left bottom,
+        #28f4f9,
+        #00d6ff,
+        #00b2ff,
+        #0083ff,
+        #7132fe
+    );
+    left: 10%;
+    top: 10%;
+    z-index: 9999;
+    box-sizing: border-box;
+    padding: 15px 15px 15px 15px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    transition: 0.5s;
+    form {
+        flex-direction: column;
+        display: flex;
+    }
+    label {
+        font-family: "Montserrat-ExtraLight";
+        color: #fff;
+        margin-bottom: 5px;
+        margin-top: 10px;
+        font-size: 16px;
+    }
 
-            .doc-text {
-                height: 50px;
-            }
+    .doc-text {
+        height: 50px;
+    }
 
-            .upload-doc {
-                width: 30px;
-                height: 30px;
-            }
+    .upload-doc {
+        width: 30px;
+        height: 30px;
+    }
 
-            input {
-                width: 300px;
-                background-color: #e3f6f5;
-                height: 40px;
-                border-radius: 5px;
-                margin-bottom: 10px;
-            }
+    input {
+        width: 300px;
+        background-color: #e3f6f5;
+        height: 40px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
 
-            .input-pdf {
-                display: inline-block;
-                padding: 8px;
-                font-size: 16px;
-                border: 2px solid #3498db;
-                border-radius: 4px;
-                background-color: #fff;
-                color: #3498db;
-                cursor: pointer;
-                transition: border-color 0.3s ease-in-out;
-            }
+    .input-pdf {
+        display: inline-block;
+        padding: 8px;
+        font-size: 16px;
+        border: 2px solid #3498db;
+        border-radius: 4px;
+        background-color: #fff;
+        color: #3498db;
+        cursor: pointer;
+        transition: border-color 0.3s ease-in-out;
+    }
 
-            .input-pdf:focus,
-            .input-pdf:hover {
-                border-color: #2980b9;
-            }
+    .input-pdf:focus,
+    .input-pdf:hover {
+        border-color: #2980b9;
+    }
 
-            .input-pdf[type="file"] {
-                display: none;
-            }
+    .input-pdf[type="file"] {
+        display: none;
+    }
 
-            .input-pdf-label {
-                display: inline-block;
-                background-color: #040455;
-                color: #fff;
-                padding: 10px 15px;
-                border-radius: 4px;
-                cursor: pointer;
-                display: flex;
-                justify-content: space-between;
-            }
+    .input-pdf-label {
+        display: inline-block;
+        background-color: #040455;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+    }
 
-            .input-pdf-label:hover {
-                transition: 0.3s;
-                background-color: #4976c4;
-            }
+    .input-pdf-label:hover {
+        transition: 0.3s;
+        background-color: #4976c4;
+    }
 
-            .input-pdf-label:not(:hover) {
-                transition: 0.3s;
-            }
-        }
+    .input-pdf-label:not(:hover) {
+        transition: 0.3s;
     }
 }
 

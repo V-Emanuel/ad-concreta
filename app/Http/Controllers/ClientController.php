@@ -58,39 +58,42 @@ class ClientController extends Controller
     public function updateDocument(Request $request)
     {
 
-        if (empty($request->documento)) {
+        if (empty($request->file('arquivos'))) {
             return redirect()->route('clientes')->with('success', 'Favor Selecionar um documento');
         }
 
-        $data = $request->all();
+        foreach ($request->file('arquivos') as $index => $arquivo) {
 
-        $cliente = Cliente::find($data['cliente_id']);
+            $nomeArquivo = uniqid() . '.' . $arquivo->getClientOriginalExtension();
 
-        $nomeArquivo = uniqid() . '.' . $request->documento->getClientOriginalExtension();
+            $pathArquivo = storage_path() . '\app\public\documentos\\' . $nomeArquivo;
 
-        $request->documento->storeAs('public/documentos', $nomeArquivo);
+            $arquivo->storeAs('public/documentos', $nomeArquivo);
 
-        $pathArquivo = storage_path() . '\app\public\documentos\\' . $nomeArquivo;
+            $url = $this->uploadToS3($arquivo, $pathArquivo);
 
-        $url = $this->uploadToS3($request->file('documento'), $pathArquivo);
+            $dados[] = [
+                'nome' => $request->nomes[$index],
+                'descricao' => $request->descricoes[$index],
+                'url' => $url,
+                'type' => $arquivo->getClientOriginalExtension()
+            ];
+        }
 
-        $document = [
-            'nome' => $data['nome'],
-            'descricao' => $data['descricao'],
-            'url' => $url,
-            'type' => $request->documento->getClientOriginalExtension()
-        ];
+        $dataRequest = $request->all();
+
+        $cliente = Cliente::find($dataRequest['cliente_id']);
 
         $documentos = $cliente->documentos;
 
         if (!empty($documentos)) {
-            $cliente->documentos = array_merge($cliente->documentos, [$document]);
+            $cliente->documentos = array_merge($cliente->documentos, $dados);
         } else {
-            $cliente->documentos = [$document];
+            $cliente->documentos = $dados;
         }
 
         $cliente->save();
 
-        return redirect()->route('clientes')->with('success', 'Cliente cadastrado com sucesso!');
+        return redirect()->route('clientes')->with('success', 'Documento(s) cadastrados com sucesso!');
     }
 }

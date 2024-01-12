@@ -53,36 +53,30 @@
                     </div>
                     <ul>
                         @foreach($cliente->documentos as $docs)
-                        <a href="{{$docs['url']}}" target="_blank">
-                            <span>
+                        <li>
+                            <a href="{{$docs['url']}}" target="_blank">
                                 @if($docs['type'] === 'pdf')
                                 <x-pdf-gray />
                                 @else
                                 <x-image-icon />
                                 @endif
-                            </span>
+                            </a>
                             {{ $docs['nome'] }} <span>({{$docs['descricao']}})</span>
-                        </a>
-                        @endforeach
+                            </a>
+                            @endforeach
                     </ul>
-                    <div class="add-document-container close-document document{{ $loop->index }}">
-                        <form method="POST" action="{{ route('cliente.doc') }}" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="cliente_id" value="{{ $cliente->id }}" />
-                            <input placeholder="Nome do Arquivo (sem  acentos)" name="nome" required type="text"
-                                pattern="[A-Za-z0-9]+">
-                            <input placeholder="Descrição" name="descricao" required type="text">
-                            <label for="upload" class="input-pdf-label">Escolha um arquivo PDF<div class="upload-svg">
-                                    <x-upload />
-                                </div></label>
-                            <input id="upload" class="input-pdf" type="file" name="documento"
-                                accept="image/*, application/pdf" />
-                            <button type="submit">
-                                butao
-                            </button>
-                        </form>
-                    </div>
                 </div>
+
+            </div>
+            <div class="add-document-container close-document document{{ $loop->index }}">
+                <form method="POST" action="{{ route('cliente.doc') }}" enctype="multipart/form-data">
+                    @csrf
+                    <label for="arquivos">Selecione os documentos:</label>
+                    <input type="hidden" name="cliente_id" value="{{ $cliente->id }}" />
+                    <input type="file" class="arquivos" name="arquivos[]" required multiple>
+                    <div class="camposExtras"></div>
+                    <input type="submit" value="Enviar">
+                </form>
             </div>
             @endforeach
         </div>
@@ -167,5 +161,31 @@
             });
         });
     });
+
+    $(document).ready(function () {
+        $('.arquivos').change(function () {
+            var camposExtrasDiv = $(this).closest('form').find('.camposExtras');
+            camposExtrasDiv.empty();
+
+            var files = this.files;
+
+            for (var i = 0; i < files.length; i++) {
+                var nomeInput = $('<input>').attr({
+                    type: 'text',
+                    name: 'nomes[]',
+                    placeholder: 'Nome do arquivo ' + (i + 1)
+                });
+
+                var descricaoInput = $('<input>').attr({
+                    type: 'text',
+                    name: 'descricoes[]',
+                    placeholder: 'Descrição do arquivo ' + (i + 1)
+                });
+
+                camposExtrasDiv.append(nomeInput).append(descricaoInput).append('<br>');
+            }
+        });
+    });
+
 
 </script>
