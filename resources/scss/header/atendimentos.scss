@@ -1,3 +1,7 @@
+*::-webkit-scrollbar {
+    width: 0px;
+}
+
 .appointments-content {
     width: 100%;
     height: 100vh;
@@ -16,6 +20,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    position: relative;
+
     .appointments-header {
         display: flex;
         width: 90%;
@@ -147,9 +153,6 @@
             }
         }
     }
-    ul::-webkit-scrollbar {
-        width: 10px;
-    }
 }
 
 .appointments-right {
@@ -162,7 +165,7 @@
     align-items: center;
     position: fixed;
     right: 0px;
-    z-index: 100;
+    z-index: 999;
     
     background-image: linear-gradient(
         to right top,
@@ -231,7 +234,7 @@
     width: 100vw;
     height: 100vh;
     position: fixed;
-    z-index: 9;
+    z-index: 2;
     background-color: rgba(0, 0, 0, 0.5);
     transition: 1s;
 }
@@ -293,3 +296,4 @@
         color: #101204;
     }
 }
+

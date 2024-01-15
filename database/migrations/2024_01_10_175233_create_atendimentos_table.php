@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreign('ramoId')->references('id')->on('ramos');
             $table->string('celular');
             $table->string('texto');
+            $table->unsignedBigInteger('userId');
+            $table->foreign('userId')->references('id')->on('users');
             $table->timestamps();
         });
     }

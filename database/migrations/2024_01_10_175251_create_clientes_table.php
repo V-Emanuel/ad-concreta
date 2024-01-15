@@ -28,6 +28,8 @@ return new class extends Migration {
             $table->json('endereco');
             $table->json('documentos');
             $table->json('observacoes');
+            $table->unsignedBigInteger('userId');
+            $table->foreign('userId')->references('id')->on('users');
 
             $table->timestamps();
         });

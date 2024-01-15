@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Services\S3Service;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
@@ -48,6 +50,7 @@ class ClientController extends Controller
             'endereco' => $endereco,
             'documentos' => [],
             'observacoes' => [],
+            'user_id' => Auth::id()
         ]);
 
         $cliente->save();
@@ -71,6 +74,10 @@ class ClientController extends Controller
             $arquivo->storeAs('public/documentos', $nomeArquivo);
 
             $url = $this->uploadToS3($arquivo, $pathArquivo);
+
+            if (Storage::exists($pathArquivo)) {
+                Storage::delete($pathArquivo);
+            }
 
             $dados[] = [
                 'nome' => $request->nomes[$index],

@@ -15,7 +15,7 @@ class ClientesSeeder extends Seeder
     public function run(): void
     {
         $clientes = [];
-        for ($i = 1; $i <= 110; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             $endereco = [
                 'cep' => '58429-100',
                 'rua' => 'Rua João Julião Martins',
@@ -49,6 +49,7 @@ class ClientesSeeder extends Seeder
                 'endereco' => json_encode($endereco),
                 'documentos' => json_encode($documentos),
                 'observacoes' => json_encode($observacoes),
+                'userId' => rand(2, 5),
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
