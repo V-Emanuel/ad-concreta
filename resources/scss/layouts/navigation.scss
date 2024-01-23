@@ -1,17 +1,17 @@
 .navigation{
     width: 100%;
-    height: 45px;
+    height: 50px;
     box-sizing: border-box;
     padding: 0px 0px 0px 20px;
     display: flex;
     align-items: center;
     background-color: $bg;
     border-bottom-width: 1px;
-    border-color: $gray;
+    border-color: $line;
     position: fixed;
     font-family: 'Metropolis-Bold';
     color: $gray;
-    font-size: 14px;
+    font-size: 15px;
     z-index: 999;
 
     .vg{

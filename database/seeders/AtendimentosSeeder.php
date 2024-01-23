@@ -14,13 +14,13 @@ class AtendimentosSeeder extends Seeder
     public function run(): void
     {
         $atendimentos = [];
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             $atendimentos[] = [
                 'nome' => 'Cliente ' . $i,
                 'cidadeId' => rand(1, 5),
                 'ramoId' => rand(1, 7),
                 'celular' => '9' . rand(100000000, 999999999),
-                'texto' => 'Atendimento para o Cliente ' . $i,
+                'texto' => 'Atendimento para o Cliente pororo ' . $i,
                 'userId' => rand(2, 5),
                 'created_at' => now(),
                 'updated_at' => now(),
