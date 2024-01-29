@@ -7,297 +7,64 @@
     height: 100vh;
     display: flex;
     box-sizing: border-box;
-    padding-top: 46px;
-    padding-right: 280px;
+    padding-top: 6%;
+    background-color: $primary;
 }
 
-.appointments-left {
-    width: 100%;
-    height: 100%;
-    padding-top: 40px;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)),
-        url("../assets/imgs/paisagem.jpg") center center no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-
-    .appointments-header {
-        display: flex;
-        width: 90%;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
-        box-sizing: border-box;
-        padding-right: 80px;
-        color: #f5f5f5;
-        p {
-            font-family: "Metropolis-Black";
-            font-size: 38px;
-        }
-        .add-register-icon {
-            font-size: 72px;
-            font-weight: bolder;
-            position: absolute;
-            right: 10px;
-            bottom: -28px;
-            &:hover {
-                transition: 300ms;
-                color: #fff;
-                cursor: pointer;
-            }
-            &:not(:hover) {
-                transition: 300ms;
-            }
-        }
-        input {
-            background-color: #9aa8b7;
-            border-radius: 7px;
-            color: #101204;
-        }
-    }
-    ul {
-        width: 100%;
-        max-height: 95%;
-        box-sizing: border-box;
-        padding-bottom: 200px;
-        padding-left: 40px;
-        padding-right: 40px;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        flex-wrap: wrap;
-        overflow-y: auto;
-
-        li {
-            width: 250px;
-            height: 160px;
-            display: flex;
-            flex-direction: column;
-            background-color: $bg;
-            color: #f5f5f5;
-            margin: 18px 18px 18px 18px;
-            box-sizing: border-box;
-            padding: 15px 15px 15px 10px;
-            border-radius: 5px;
-            position: relative;
-
-            h1 {
-                font-family: "Metropolis-Black";
-                flex-wrap: wrap;
-                font-size: 18px;
-                margin-bottom: 10px;
-            }
-            h2 {
-                font-family: "Montserrat-Bold";
-                font-size: 12px;
-                margin-bottom: 2px;
-            }
-
-            h3 {
-                width: 100%;
-                position: absolute;
-                bottom: 5px;
-                font-family: "Montserrat-Bold";
-                font-size: 12px;
-                color: #fff;
-            }
-
-            span {
-                width: 100%;
-                height: 28px;
-                position: absolute;
-                bottom: 0px;
-                left: 0px;
-                background-color: #373f45;
-                border-bottom-width: 1px;
-                border-bottom-left-radius: 5px;
-                border-bottom-right-radius: 5px;
-                border-color: $gray;
-            }
-
-            .appointment-icon {
-                position: absolute;
-                right: 4px;
-                bottom: -10px;
-                font-size: 34px;
-                font-weight: bolder;
-                color: #fff;
-                &:hover {
-                    transition: 0.5s;
-                    color: $gray;
-                    cursor: pointer;
-                }
-                &:not(:hover) {
-                    transition: 0.5s;
-                }
-            }
-
-            p {
-                overflow-wrap: break-word;
-                word-wrap: break-word;
-                width: 280px;
-                flex-wrap: wrap;
-                height: max-content;
-                position: absolute;
-                top: 160px;
-                left: 0px;
-                z-index: 3;
-                box-sizing: border-box;
-                padding: 15px 15px 15px 15px;
-                border-top-right-radius: 10px;
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
-                background-color: #373f45;
-                color: #fff;
-                text-align: start;
-                transition: 0.5s;
-            }
-        }
-    }
-}
-
-.appointments-right {
-    width: 760px;
+.appointments-column{
+    width: 16%;
     height: 100%;
     box-sizing: border-box;
-    padding-top: 70px;
+    padding-top: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: fixed;
-    right: 0px;
-    z-index: 999;
-
-    background-image: linear-gradient(
-        to right top,
-        #583702,
-        #84560d,
-        #aa7a28,
-        #ae7923,
-        #e19729
-    );
-    z-index: 6;
-    transition: 1s;
-    .form-title {
-        margin-bottom: 30px;
-        font-family: "Metropolis-Black";
-        color: #fff;
-        font-size: 40px;
+    :nth-child(3){
+        :nth-child(1){
+            width: 18px;
+        }
     }
-    .close-register-icon {
-        font-size: 50px;
-        position: absolute;
-        top: 10px;
-        left: 20px;
-        color: #fff;
-        border-radius: 5px;
-        &:hover {
-            transition: 300ms;
-            color: #583702;
+
+    li{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 75%;
+        height: max-content;
+        box-sizing: border-box;
+        padding: 7px 0px 7px 12%;
+        margin-bottom: 22px;
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: "Metropolis-Bold";
+        color: #636363;
+        transition: 0.3s;
+
+        :nth-child(1){
+            width: 24px;
+            margin-right: 10px;
+            color: #000;
+            opacity: 0.8;
+        }
+
+        &:hover{
+            background-color: #b3b3b3;
             cursor: pointer;
         }
-        &:not(:hover) {
-            transition: 300ms;
-        }
     }
+
+
 }
 
-.active-x {
-    transform: translateX(0%);
-}
-
-.active-opacity {
-    transform: scale(1);
-    opacity: 1;
-    transition: opacity 1s ease-out;
-}
-
-.no-active-x {
-    transform: translateX(100%);
-}
-
-.no-active-opacity {
-    transform: scale(0);
-    opacity: 0;
-    transition: opacity 1s ease-out;
-}
-
-.active-register-content {
-    transform: scale(1) translate(0%, 0%);
-}
-
-.no-active-register-content {
-    transform: scale(0) translate(-100%, -100%);
-    transform-origin: top left;
-}
-
-.opacity-bg {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: 1s;
-}
-
-.filter-column {
-    position: fixed;
-    background-color: #101204;
-    border-width: 1px;
-    border-top: transparent;
-    border-right: transparent;
-    border-color: transparent;
-    border-color: $line;
-    width: 280px;
+.appointments-options{
+    width: 68%;
     height: 100%;
-    right: 0px;
-    box-sizing: border-box;
-    padding-top: 40px;
-    padding-left: 20px;
-    color: #9aa8b7;
-    p {
-        font-family: "Metropolis-Black";
-        font-size: 26px;
-    }
-
-    h1 {
-        font-family: "Montserrat-ExtraLight";
-        font-size: 18px;
-        margin-bottom: 5px;
-        margin-top: 30px;
-    }
-    .filter-line {
-        width: 220px;
-        height: 1px;
-        background-color: $line;
-        margin-bottom: 10px;
-    }
-    .checkbox-container {
-        display: flex;
-        align-items: center;
-        margin-left: 15px;
-        input {
-            margin-right: 6px;
-            border-radius: 4px;
-        }
-        h3 {
-            font-family: "Montserrat-ExtraLight";
-            font-size: 14px;
-        }
-    }
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 
-.date-filter-container {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    input {
-        border-radius: 5px;
-        background-color: #9aa8b7;
-        color: #101204;
-    }
+.appointments-filter{
+    width: 16%;
+    height: 100%;
 }

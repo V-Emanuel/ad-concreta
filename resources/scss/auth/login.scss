@@ -22,7 +22,7 @@
             margin-bottom: 12px;
         }
         h1 {
-            color: #fff;
+            color: $font;
             font-size: 32px;
             font-family: "Futura-Medium";
             letter-spacing: 8px;
@@ -58,7 +58,7 @@
             p {
                 font-family: "Metropolis-Black";
                 font-size: 44px;
-                color: $gray;
+                color: $font;
             }
 
             h2 {
@@ -141,14 +141,14 @@
                     padding: 8px 30px 8px 30px;
                     border-radius: 8px;
                     background-color: $vg;
-                    color: $bg;
+                    color: $primary;
                     font-family: "Metropolis-Bold";
                     font-size: 24px;
                     margin-top: 90px;
                     &:hover {
                         transition: 0.2s;
                         cursor: pointer;
-                        background-color: $gray;
+                        background-color: $secondary;
                     }
                     &:not(:hover){
                         transition: 0.3s;

@@ -1,5 +1,6 @@
 <form class="create-atendimento-component" id="cadastroForm" method="POST">
     @csrf
+    <h6>Novo Registro</h6>
     <label>Nome:<span style="color: red"> *</span></label>
     <input placeholder="Nome" name="nome" required type="text">
     <label>Cidade:<span style="color: red"> *</span></label>
@@ -23,6 +24,10 @@
             <p>REGISTRAR</p>
         </button>
     </div>
+    <span class="vg-icon">
+        <x-vg />
+    </span>
+
 </form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
