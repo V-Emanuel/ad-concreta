@@ -5,7 +5,7 @@
 
 .appointments-content {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     box-sizing: border-box;
     padding-top: 6%;
@@ -14,7 +14,6 @@
 
 .appointments-column {
     width: 16%;
-    height: 100%;
     box-sizing: border-box;
     padding-top: 2%;
     display: flex;
@@ -57,7 +56,6 @@
 
 .appointments-options {
     width: 68%;
-    height: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -65,7 +63,6 @@
 
 .appointments-filter {
     width: 16%;
-    height: 100%;
     box-sizing: border-box;
     padding-top: 2%;
     display: flex;

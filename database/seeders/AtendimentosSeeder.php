@@ -21,7 +21,7 @@ class AtendimentosSeeder extends Seeder
                 'ramoId' => rand(1, 7),
                 'celular' => '9' . rand(100000000, 999999999),
                 'texto' => 'Atendimento para o Cliente pororo ' . $i,
-                'userId' => rand(2, 5),
+                'userId' => rand(1, 5),
                 'created_at' => now(),
                 'updated_at' => now(),
             ];

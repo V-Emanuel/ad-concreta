@@ -49,7 +49,7 @@ class ClientesSeeder extends Seeder
                 'endereco' => json_encode($endereco),
                 'documentos' => json_encode($documentos),
                 'observacoes' => json_encode($observacoes),
-                'userId' => rand(2, 5),
+                'userId' => rand(1, 5),
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
