@@ -5,12 +5,6 @@
             <input type="text" id="searchInput" placeholder="Pesquisar por nome...">
             <div class="add-client-icon">+</div>
         </header>
-        <div class="no-active-x clients-right">
-            <div class="close-client-icon">➠</div>
-            <p class='form-title'>Registrar Cliente</p>
-            <x-form-cliente />
-        </div>
-        <div class="no-active-opacity client-opacity-bg"></div>
         <div class="all-clients" id="searchClients">
             @foreach($clientes as $cliente)
             <div class="client-container searchable-div">

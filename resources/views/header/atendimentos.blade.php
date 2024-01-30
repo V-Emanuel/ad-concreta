@@ -6,7 +6,8 @@
             <li><x-register-icon /> Meus Registros</li>
         </ul>
         <div class="appointments-options">
-            <x-form-atendimento/>
+            <!-- <x-form-atendimento/> -->
+            <x-atendimentos />
         </div>
         <div class="appointments-filter">
 

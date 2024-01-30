@@ -1,0 +1,142 @@
+.appointments-list {
+    width: 100%;
+    max-height: 100%;
+    border-radius: 4px;
+    background-color: $secondary;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-top: 40px;
+    overflow-y: auto;
+
+    p {
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 10%;
+        padding-right: 10%;
+        font-family: "Montserrat-Bold";
+        font-size: 26px;
+        color: #333333;
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .appointments-search {
+            display: flex;
+
+            :nth-child(1) {
+                width: 30px;
+                background-color: $primary;
+                box-sizing: border-box;
+                border-top-left-radius: 6px;
+                border-bottom-left-radius: 6px;
+                padding-left: 10px;
+            }
+            :nth-child(2) {
+                width: 230px;
+                height: 34px;
+                border-top-right-radius: 6px;
+                border-bottom-right-radius: 6px;
+                border: none;
+                background-color: $primary;
+                font-size: 14px;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    .appointments-ul {
+        width: 100%;
+        height: 100vh;
+        border-radius: 4px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        box-sizing: border-box;
+        padding-left: 10%;
+        overflow-y: auto;
+
+        .searchable-li {
+            width: 74%;
+            height: 300px;
+            height: max-content;
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+                rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            margin-bottom: 40px;
+            box-sizing: border-box;
+            padding: 32px 20px;
+            position: relative;
+            border-width: 2px;
+
+            h1 {
+                font-family: "Montserrat-Bold";
+                font-size: 24px;
+                color: #636363;
+            }
+
+            h3 {
+                top: 6px;
+                right: 10px;
+                position: absolute;
+                font-size: 14px;
+            }
+
+            .visible-appointment-info {
+                display: flex;
+            }
+
+            .invisible-appointment-info {
+                display: none;
+            }
+
+            .appointment-info {
+                width: 100%;
+                height: max-content;
+                position: relative;
+                color: #636363;
+                padding: 20px 20px;
+                transition: 0.4s;
+
+                .appointment-data {
+                    width: 50%;
+                    height: max-content;
+                    strong {
+                        font-family: "Montserrat-Bold";
+                    }
+
+                    h2 {
+                        font-family: "Montserrat-Bold";
+                        font-size: 20px;
+                        margin-bottom: 10px;
+                    }
+
+                    h4 {
+                        margin-left: 20px;
+                        margin-bottom: 4px;
+                    }
+                }
+
+                .appointment-text {
+                    width: 50%;
+                    height: max-content;
+                    flex-wrap: wrap;
+                    text-align: justify;
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+                }
+            }
+
+            &:hover {
+                border-color: $vg;
+                cursor: pointer;
+            }
+        }
+    }
+}
