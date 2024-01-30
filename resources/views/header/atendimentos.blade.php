@@ -44,44 +44,72 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var checkboxesCidade = document.querySelectorAll('.checkbox-cidade');
-            var checkboxesRamo = document.querySelectorAll('.checkbox-ramo');
-            var startDateInput = document.getElementById('startDate');
-            var endDateInput = document.getElementById('endDate');
-            var lis = document.querySelectorAll('.searchable-li');
 
-            function applyFilters() {
-                var startDate = new Date(startDateInput.value);
-                var endDate = new Date(endDateInput.value);
+        document.getElementById('searchInput').addEventListener('input', function () {
 
-                lis.forEach(function (li) {
-                    var cidadeId = li.getAttribute('data-cidade');
-                    var ramoId = li.getAttribute('data-ramo');
-                    var dataCriacao = new Date(li.getAttribute('data-data'));
+            let searchTerm = this.value.toLowerCase();
 
-                    var cidadeChecked = checkboxesCidade[cidadeId - 1].checked;
-                    var ramoChecked = checkboxesRamo[ramoId - 1].checked;
-                    var dateInRange = (!startDate || dataCriacao >= startDate) && (!endDate || dataCriacao <= endDate);
+            let searchResults = document.getElementById('searchResults');
+            let items = searchResults.getElementsByClassName('searchable-li');
+            let names = searchResults.getElementsByClassName('searchable-content');
 
-                    if (cidadeChecked && ramoChecked && dateInRange) {
-                        li.style.display = 'block';
-                    } else {
-                        li.style.display = 'none';
-                    }
-                });
+            for (let i = 0; i < items.length; i++) {
+                let name = names[i];
+                let item = items[i]
+                let textContent = name.textContent || name.innerText;
+
+                if (textContent.toLowerCase().includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
             }
-
-            checkboxesCidade.forEach(function (checkbox) {
-                checkbox.addEventListener('change', applyFilters);
-            });
-
-            checkboxesRamo.forEach(function (checkbox) {
-                checkbox.addEventListener('change', applyFilters);
-            });
-
-            startDateInput.addEventListener('change', applyFilters);
-            endDateInput.addEventListener('change', applyFilters);
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            document.querySelectorAll('.checkbox-cidade').forEach(function (checkbox) {
+                checkbox.addEventListener('change', function () {
+                    filterAtendimentos();
+                });
+            });
+
+            document.querySelectorAll('.checkbox-ramo').forEach(function (checkbox) {
+                checkbox.addEventListener('change', function () {
+                    filterAtendimentos();
+                });
+            });
+
+            document.getElementById('startDate').addEventListener('change', function () {
+                filterAtendimentos();
+            });
+
+            document.getElementById('endDate').addEventListener('change', function () {
+                filterAtendimentos();
+            });
+
+            function filterAtendimentos() {
+                let cidadesSelecionadas = Array.from(document.querySelectorAll('.checkbox-cidade:checked')).map(checkbox => checkbox.dataset.cidade);
+                let ramosSelecionados = Array.from(document.querySelectorAll('.checkbox-ramo:checked')).map(checkbox => checkbox.dataset.ramo);
+                let startDate = document.getElementById('startDate').value;
+                let endDate = document.getElementById('endDate').value;
+
+                let atendimentos = document.getElementsByClassName('searchable-li');
+
+                for (let i = 0; i < atendimentos.length; i++) {
+                    let atendimento = atendimentos[i];
+                    let cidadeAtendimento = atendimento.dataset.cidade;
+                    let ramoAtendimento = atendimento.dataset.ramo;
+                    let dataAtendimento = atendimento.dataset.data;
+
+                    let cidadeFiltrada = cidadesSelecionadas.length === 0 || cidadesSelecionadas.includes(cidadeAtendimento);
+                    let ramoFiltrado = ramosSelecionados.length === 0 || ramosSelecionados.includes(ramoAtendimento);
+                    let dataFiltrada = (startDate === '' || dataAtendimento >= startDate) && (endDate === '' || dataAtendimento <= endDate);
+
+                    atendimento.style.display = cidadeFiltrada && ramoFiltrado && dataFiltrada ? 'block' : 'none';
+                }
+            }
+        });
+
     </script>
 </x-app-layout>
