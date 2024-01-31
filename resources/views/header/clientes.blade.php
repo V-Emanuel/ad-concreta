@@ -1,48 +1,16 @@
 <x-app-layout>
     <div class="clients-content">
         <ul class="clients-column">
-            <button onclick="mostrarComponente('form')"><x-user-icon /> Novo Registro</button>
-            <button onclick="mostrarComponente('atendimentos')"><x-list-icon /> Atendimentos</button>
+            <button onclick="mostrarComponente('form')"><x-user-icon /> Novo Cliente</button>
+            <button onclick="mostrarComponente('atendimentos')"><x-list-icon /> Clientes</button>
         </ul>
-        <div id="clients-form" class="clients-options">
-            <x-form-cliente />
-        </div>
-
-        <div id="clients-atendimentos" style="display: none;" class="clients-options">
-            <x-clientes />
+   
+        <div id="clients-select" class="clients-options">
+            <x-cliente-page />
         </div>
 
         <div class="clients-filter" style="display: none;">
-            <p>Filtrar Registros</p>
 
-            <h1> Por Cidade: </h1>
-
-            @foreach($cidades as $cidade)
-            <div class="checkbox-container">
-                <input type="checkbox" class="checkbox-cidade" data-cidade="{{ $cidade->id }}" />
-                <h3>{{$cidade->nome}}</h3>
-            </div>
-            @endforeach
-
-            <h1> Por Tipo: </h1>
-
-            @foreach($ramos as $ramo)
-            <div class="checkbox-container">
-                <input type="checkbox" class="checkbox-ramo" data-ramo="{{ $ramo->id }}" />
-                <h3>{{$ramo->nome}}</h3>
-            </div>
-            @endforeach
-            <h1> Por Data: </h1>
-            <div class="date-filter-container">
-                <span>
-                    <label for="startDate">De:</label>
-                    <input type="date" id="startDate">
-                </span>
-                <span>
-                    <label for="endDate">Até:</label>
-                    <input type="date" id="endDate">
-                </span>
-            </div>
         </div>
     </div>
 
