@@ -1,14 +1,18 @@
 <x-app-layout>
     <div class="appointments-content">
         <ul class="appointments-column">
-            <li><x-user-icon /> Novo Registro</li>
-            <li><x-list-icon /> Atendimentos</li>
-            <li><x-register-icon /> Meus Registros</li>
+            <button onclick="mostrarComponente('form')"><x-user-icon /> Novo Registro</button>
+            <button onclick="mostrarComponente('atendimentos')"><x-list-icon /> Atendimentos</button>
         </ul>
-        <div class="appointments-options">
-        <x-atendimentos />
+        <div id="appointments-form" class="appointments-options">
+            <x-form-atendimento />
         </div>
-        <div class="appointments-filter">
+
+        <div id="appointments-atendimentos" style="display: none;" class="appointments-options">
+            <x-atendimentos />
+        </div>
+
+        <div class="appointments-filter" style="display: none;">
             <p>Filtrar Registros</p>
 
             <h1> Por Cidade: </h1>
@@ -43,6 +47,27 @@
     </div>
 
     <script>
+
+        function mostrarComponente(componenteId) {
+
+            let filter = document.querySelector('.appointments-filter');
+
+            let todosComponentes = document.querySelectorAll('.appointments-options');
+            todosComponentes.forEach(function (componente) {
+                componente.style.display = 'none';
+            });
+
+            if (componenteId === "form") {
+                filter.style.display = 'none';
+            } else {
+                filter.style.display = 'flex';
+            }
+
+            let componenteSelecionado = document.getElementById('appointments-' + componenteId);
+            if (componenteSelecionado) {
+                componenteSelecionado.style.display = 'flex';
+            }
+        }
 
         document.getElementById('searchInput').addEventListener('input', function () {
 

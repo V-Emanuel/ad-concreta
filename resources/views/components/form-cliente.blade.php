@@ -1,5 +1,6 @@
 <form class="create-cliente-component" id="cadastroForm" method="POST" action="{{ route('cliente.post') }}">
     @csrf
+    <h6>Novo Cliente</h6>
     <div class="form-inputs-container">
         <label>Nome:<span style="color: red"> *</span></label>
         <input placeholder="Nome" name="nome" required type="text">
@@ -65,11 +66,14 @@
         </div>
     </div>
 
-
-    <button type="submit" id="btnCadastrarCliente" onclick="exibirDados()">
-        <p>CADASTRAR</p>
-    </button>
-
+    <div class="button-container">
+        <button type="submit" id="btnCadastrarCliente" onclick="exibirDados()">
+            <p>CADASTRAR</p>
+        </button>
+    </div>
+    <span class="vg-icon">
+        <x-vg />
+    </span>
 </form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -1,190 +1,139 @@
 <x-app-layout>
     <div class="clients-content">
-        <header class="clients-header">
-            <p>Clientes</p>
-            <input type="text" id="searchInput" placeholder="Pesquisar por nome...">
-            <div class="add-client-icon">+</div>
-        </header>
-        <div class="all-clients" id="searchClients">
-            @foreach($clientes as $cliente)
-            <div class="client-container searchable-div">
-                <p class="searchable-name">{{$cliente->nome}} <span>({{$cliente->situacao}})</span></p>
-                <div class="icon-container">
-                    <div class="arrow-icon">➠</div>
-                </div>
-            </div>
-            <div class="client-info searchable-info">
-                <div class="client-data">
-                    <div class="client-data-left">
-                        <h6>Nome da Mãe: <span>{{$cliente->nome_mae}}</span></h6>
-                        <h6>Nome do Pai: <span>{{$cliente->nome_pai}}</span></h6>
-                        <h6>Naturalidade: <span>{{$cliente->naturalidade}}</span></h6>
-                        <h6>Estado Civil: <span>{{$cliente->estado_civil}}</span></h6>
-                        <h6>Profissão: <span>{{$cliente->profissao}}</span></h6>
-                        <h6>RG: <span>{{$cliente->rg}}</span></h6>
-                        <h6>CPF: <span>{{$cliente->cpf}}</span></h6>
-                        <h6>Data de Nascimento: <span>{{$cliente->nascimento}}</span></h6>
-                        <h6>Local de Nascimento: <span>{{$cliente->cidade_nascimento}} /
-                                {{$cliente->estado_nascimento}}</span></h6>
-                        <h6>Celular: <span>{{$cliente->celular}}</span></h6>
-                    </div>
-                    <div class="client-data-right">
-                        <h5>Endereço:</h5>
-                        <div class="adress-content">
-                            <h6>CEP: <span>{{$cliente->endereco['cep']}}</span></h6>
-                            <h6>Rua: <span>{{$cliente->endereco['rua']}}</span></h6>
-                            <h6>Bairro: <span>{{$cliente->endereco['bairro']}}</span></h6>
-                            <h6>Número: <span>{{$cliente->endereco['numero']}}</span></h6>
-                            <h6>Cidade: <span>{{$cliente->endereco['cidade']}}</span></h6>
-                            <h6>Estado: <span>{{$cliente->endereco['estado']}}</span></h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="client-docs">
-                    <h4>Documentos :</h4>
-                    <div class="add-pdf-icon">
-                        <x-add-pdf />
-                    </div>
-                    <ul>
-                        @foreach($cliente->documentos as $docs)
-                        <li>
-                            <div>
-                                <a href="{{$docs['url']}}" target="_blank">
-                                    @if($docs['type'] === 'pdf')
-                                    <x-pdf-gray />
-                                    @else
-                                    <x-image-icon />
-                                    @endif
-                                </a>
-                                <p>{{ $docs['nome'] }}</p>
-                            </div>
-                            <h6>({{$docs['descricao']}})</h6>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
+        <ul class="clients-column">
+            <button onclick="mostrarComponente('form')"><x-user-icon /> Novo Registro</button>
+            <button onclick="mostrarComponente('atendimentos')"><x-list-icon /> Atendimentos</button>
+        </ul>
+        <div id="clients-form" class="clients-options">
+            <x-form-cliente />
+        </div>
 
-            </div>
-            <div class="add-document-container close-document document{{ $loop->index }}">
-                <form method="POST" action="{{ route('cliente.doc') }}" enctype="multipart/form-data">
-                    @csrf
-                    <label for="arquivos">Selecione os documentos:</label>
-                    <input type="hidden" name="cliente_id" value="{{ $cliente->id }}" />
-                    <div class="input-files-container">
-                        <input class="arquivos input-files" type="file" name="arquivos[]" required multiple>
-                        <p>Clique aqui para adicionar os arquivos</p>
-                    </div>
-                    <div class="camposExtras"></div>
-                    <input class="input-button" type="submit" value="Enviar">
-                </form>
+        <div id="clients-atendimentos" style="display: none;" class="clients-options">
+            <x-clientes />
+        </div>
+
+        <div class="clients-filter" style="display: none;">
+            <p>Filtrar Registros</p>
+
+            <h1> Por Cidade: </h1>
+
+            @foreach($cidades as $cidade)
+            <div class="checkbox-container">
+                <input type="checkbox" class="checkbox-cidade" data-cidade="{{ $cidade->id }}" />
+                <h3>{{$cidade->nome}}</h3>
             </div>
             @endforeach
+
+            <h1> Por Tipo: </h1>
+
+            @foreach($ramos as $ramo)
+            <div class="checkbox-container">
+                <input type="checkbox" class="checkbox-ramo" data-ramo="{{ $ramo->id }}" />
+                <h3>{{$ramo->nome}}</h3>
+            </div>
+            @endforeach
+            <h1> Por Data: </h1>
+            <div class="date-filter-container">
+                <span>
+                    <label for="startDate">De:</label>
+                    <input type="date" id="startDate">
+                </span>
+                <span>
+                    <label for="endDate">Até:</label>
+                    <input type="date" id="endDate">
+                </span>
+            </div>
         </div>
     </div>
-</x-app-layout>
 
-<script>
+    <script>
 
-    document.addEventListener('DOMContentLoaded', function () {
+        function mostrarComponente(componenteId) {
 
-        document.querySelectorAll('.add-pdf-icon').forEach(function (icon, index) {
-            icon.addEventListener('click', function () {
-                let addDocumentForm = document.querySelector('.document' + index);
-                addDocumentForm.classList.toggle('close-document');
-                addDocumentForm.classList.toggle('open-document');
+            let filter = document.querySelector('.clients-filter');
+
+            let todosComponentes = document.querySelectorAll('.clients-options');
+            todosComponentes.forEach(function (componente) {
+                componente.style.display = 'none';
             });
-        });
 
-        document.querySelectorAll('.add-client-icon').forEach(function (icon) {
-            icon.addEventListener('click', function () {
-                let appointmentsRight = document.querySelector('.clients-right');
-                let opacityBg = document.querySelector('.client-opacity-bg');
+            if (componenteId === "form") {
+                filter.style.display = 'none';
+            } else {
+                filter.style.display = 'flex';
+            }
 
-                appointmentsRight.classList.toggle('active-x');
-                appointmentsRight.classList.toggle('no-active-x');
-                opacityBg.classList.toggle('active-opacity');
-                opacityBg.classList.toggle('no-active-opacity');
-            });
-        });
-
-        document.querySelectorAll('.close-client-icon').forEach(function (icon) {
-            icon.addEventListener('click', function () {
-                let appointmentsRight = document.querySelector('.clients-right');
-                let opacityBg = document.querySelector('.client-opacity-bg');
-
-                appointmentsRight.classList.toggle('active-x');
-                appointmentsRight.classList.toggle('no-active-x');
-                opacityBg.classList.toggle('active-opacity');
-                opacityBg.classList.toggle('no-active-opacity');
-            });
-        });
-
+            let componenteSelecionado = document.getElementById('clients-' + componenteId);
+            if (componenteSelecionado) {
+                componenteSelecionado.style.display = 'flex';
+            }
+        }
 
         document.getElementById('searchInput').addEventListener('input', function () {
+
             let searchTerm = this.value.toLowerCase();
-            let searchResults = document.getElementById('searchClients');
-            let items = searchResults.getElementsByClassName('searchable-div');
-            let names = searchResults.getElementsByClassName('searchable-name');
-            let infos = searchResults.getElementsByClassName('searchable-info');
+
+            let searchResults = document.getElementById('searchResults');
+            let items = searchResults.getElementsByClassName('searchable-li');
+            let names = searchResults.getElementsByClassName('searchable-content');
 
             for (let i = 0; i < items.length; i++) {
                 let name = names[i];
-                let item = items[i];
-                let info = infos[i];
-
+                let item = items[i]
                 let textContent = name.textContent || name.innerText;
 
                 if (textContent.toLowerCase().includes(searchTerm)) {
-                    item.style.display = 'flex';
-                    info.style.display = 'flex';
+                    item.style.display = 'block';
                 } else {
                     item.style.display = 'none';
-                    info.style.display = 'none';
                 }
             }
         });
 
-    });
+        document.addEventListener('DOMContentLoaded', function () {
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var arrowIcons = document.querySelectorAll('.arrow-icon');
-
-        arrowIcons.forEach(function (arrowIcon) {
-            arrowIcon.addEventListener('click', function () {
-                var clientInfo = this.closest('.client-container').nextElementSibling;
-
-                if (clientInfo.style.height === '0px' || clientInfo.style.height === '') {
-                    clientInfo.style.height = clientInfo.scrollHeight + 'px';
-                } else {
-                    clientInfo.style.height = '0';
-                }
+            document.querySelectorAll('.checkbox-cidade').forEach(function (checkbox) {
+                checkbox.addEventListener('change', function () {
+                    filterAtendimentos();
+                });
             });
-        });
-    });
 
-    $(document).ready(function () {
-        $('.arquivos').change(function () {
-            var camposExtrasDiv = $(this).closest('form').find('.camposExtras');
-            camposExtrasDiv.empty();
-
-            var files = this.files;
-
-            for (var i = 0; i < files.length; i++) {
-                var nomeInput = $('<input>').attr({
-                    type: 'text',
-                    name: 'nomes[]',
-                    value: files[i].name
+            document.querySelectorAll('.checkbox-ramo').forEach(function (checkbox) {
+                checkbox.addEventListener('change', function () {
+                    filterAtendimentos();
                 });
+            });
 
-                var descricaoInput = $('<input>').attr({
-                    type: 'text',
-                    name: 'descricoes[]',
-                    placeholder: 'Descrição'
-                });
+            document.getElementById('startDate').addEventListener('change', function () {
+                filterAtendimentos();
+            });
 
-                camposExtrasDiv.append(nomeInput).append(descricaoInput);
+            document.getElementById('endDate').addEventListener('change', function () {
+                filterAtendimentos();
+            });
+
+            function filterAtendimentos() {
+                let cidadesSelecionadas = Array.from(document.querySelectorAll('.checkbox-cidade:checked')).map(checkbox => checkbox.dataset.cidade);
+                let ramosSelecionados = Array.from(document.querySelectorAll('.checkbox-ramo:checked')).map(checkbox => checkbox.dataset.ramo);
+                let startDate = document.getElementById('startDate').value;
+                let endDate = document.getElementById('endDate').value;
+
+                let atendimentos = document.getElementsByClassName('searchable-li');
+
+                for (let i = 0; i < atendimentos.length; i++) {
+                    let atendimento = atendimentos[i];
+                    let cidadeAtendimento = atendimento.dataset.cidade;
+                    let ramoAtendimento = atendimento.dataset.ramo;
+                    let dataAtendimento = atendimento.dataset.data;
+
+                    let cidadeFiltrada = cidadesSelecionadas.length === 0 || cidadesSelecionadas.includes(cidadeAtendimento);
+                    let ramoFiltrado = ramosSelecionados.length === 0 || ramosSelecionados.includes(ramoAtendimento);
+                    let dataFiltrada = (startDate === '' || dataAtendimento >= startDate) && (endDate === '' || dataAtendimento <= endDate);
+
+                    atendimento.style.display = cidadeFiltrada && ramoFiltrado && dataFiltrada ? 'block' : 'none';
+                }
             }
         });
-    });
 
-</script>
+    </script>
+</x-app-layout>
