@@ -155,7 +155,24 @@
         border-radius: 8px;
         position: relative;
 
-        .close-form-document{
+        .input-button {
+            box-sizing: border-box;
+            padding: 8px 18px;
+            font-family: "Metropolis-Black";
+            font-size: 18px;
+            border-radius: 8px;
+            background-color: #064539;
+            margin-bottom: 20px;
+            transition: 0.4s;
+
+            &:hover {
+                background-color: #e3e3e3;
+                color: #064539;
+                cursor:  pointer;
+            }
+        }
+
+        .close-form-document {
             box-sizing: border-box;
             padding: 6px 10px;
             background-color: #000;
@@ -163,7 +180,7 @@
             top: 10px;
             right: 14px;
 
-            &:hover{
+            &:hover {
                 cursor: pointer;
             }
         }
