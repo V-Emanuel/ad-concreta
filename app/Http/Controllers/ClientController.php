@@ -77,7 +77,7 @@ class ClientController extends Controller
 
             $pathArquivo = storage_path() . '\app\public\documentos\\' . $nomeArquivo;
 
-            $arquivo->storeAs('public/documentos', $nomeArquivo);
+            $arquivo->storeAs('documentos', $nomeArquivo);
 
             $url = $this->uploadToS3($arquivo, $pathArquivo);
 

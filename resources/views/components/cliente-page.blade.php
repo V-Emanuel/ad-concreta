@@ -78,27 +78,24 @@
             });
         });
 
-        // Adiciona um evento de mudança ao campo de entrada de arquivo
         document.querySelector('.input-files').addEventListener('change', function (event) {
-            // Obtém os arquivos selecionados
+
             const files = event.target.files;
 
-            // Cria campos de entrada adicionais para nome e descrição para cada arquivo
             const camposExtras = document.querySelector('.camposExtras');
-            camposExtras.innerHTML = ''; // Limpa os campos extras antes de adicionar novos
+            camposExtras.innerHTML = '';
 
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
 
-                // Cria campos de entrada para nome e descrição
                 const nomeInput = document.createElement('input');
                 nomeInput.type = 'text';
-                nomeInput.name = `nomes[${i}]`; // Use um array para enviar vários nomes ao backend
+                nomeInput.name = `nomes[${i}]`;
                 nomeInput.placeholder = 'Nome do Documento';
 
                 const descricaoInput = document.createElement('input');
                 descricaoInput.type = 'text';
-                descricaoInput.name = `descricoes[${i}]`; // Use um array para enviar várias descrições ao backend
+                descricaoInput.name = `descricoes[${i}]`;
                 descricaoInput.placeholder = 'Descrição do Documento';
 
                 // Adiciona os campos ao formulário
