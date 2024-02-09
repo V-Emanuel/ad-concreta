@@ -20,27 +20,29 @@
             <h5><strong>Local de Nascimento: </strong>{{$cliente->cidade_nascimento}} / {{$cliente->estado_nascimento}}
             </h5>
         </div>
-        <ul class="cliente-content-right">
+        <div class="cliente-content-right">
             <h6>Documentos: </h6>
-            @foreach($cliente->documentos as $docs)
-            <li>
-                <div>
-                    <a href="{{$docs['url']}}" target="_blank">
-                        @if($docs['type'] === 'pdf')
-                        <x-pdf-gray />
-                        @else
-                        <x-image-icon />
-                        @endif
-                    </a>
-                    <p>{{ $docs['nome'] }}</p>
-                </div>
-                <h6>({{$docs['descricao']}})</h6>
-            </li>
-            @endforeach
+            <ul class="ul-documents">
+                @foreach($cliente->documentos as $docs)
+                <li>
+                    <div>
+                        <a href="{{$docs['url']}}" target="_blank">
+                            @if($docs['type'] === 'pdf')
+                            <x-pdf-gray />
+                            @else
+                            <x-image-icon />
+                            @endif
+                        </a>
+                        <p>{{ $docs['nome'] }}</p>
+                    </div>
+                    <h4>({{$docs['descricao']}})</h4>
+                </li>
+                @endforeach
+            </ul>
             <span class="add-pdf-icon">
                 <x-add-pdf />
             </span>
-        </ul>
+        </div>
     </div>
 </div>
 

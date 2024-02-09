@@ -57,13 +57,15 @@
             }
 
             h5 {
-                font-family: "Montserrat-Extralight";
+                font-family: "Montserrat-Medium";
                 font-size: 16px;
                 margin-left: 10px;
                 margin-bottom: 4px;
+                color: #636363;
                 strong {
+                    font-size: 17px;
                     font-family: "Montserrat-Bold";
-                    color: #636363;
+                    color: #434343;
                 }
             }
         }
@@ -75,37 +77,51 @@
             padding: 28px 6px;
             position: relative;
 
-            li {
-                display: flex;
+            .ul-documents {
                 width: 100%;
-                margin-bottom: 14px;
+                max-height: 80%;
+                overflow-y: auto;
                 display: flex;
                 flex-direction: column;
-                font-family: "Metropolis-Bold";
-                font-size: 18px;
-
-                div {
+                margin-left: 30px;
+                li {
                     display: flex;
-                    p {
-                        width: 92%;
+                    width: 80%;
+                    height: max-content;
+                    margin-bottom: 14px;
+                    display: flex;
+                    flex-direction: column;
+                    font-family: "Metropolis-Bold";
+                    font-size: 18px;
+                    background-color: #d3d3d3;
+                    box-sizing: border-box;
+                    padding: 8px 8px 8px 8px;
+                    border-radius: 8px;
+
+                    div {
+                        display: flex;
+                        p {
+                            width: 80%;
+                            font-size: 18px;
+                            font-family: "Montserrat-Medium";
+                            flex-wrap: wrap;
+                        }
+                        a {
+                            width: 26px;
+                            margin-right: 6px;
+                        }
+                    }
+
+                    h4 {
+                        color: #636363;
+                        width: 90%;
+                        font-family: "Montserrat-Medium";
+                        font-size: 12px;
+                        margin-right: 10px;
+                        margin-left: 50px;
+                        box-sizing: border-box;
                         flex-wrap: wrap;
                     }
-                    a {
-                        width: 32px;
-                        height: 32px;
-                        margin-right: 6px;
-                    }
-                }
-
-                h4 {
-                    width: 90%;
-                    font-family: "Montserrat-ExtraLight";
-                    font-size: 14px;
-                    margin-right: 10px;
-                    margin-left: 50px;
-                    margin-bottom: 6px;
-                    box-sizing: border-box;
-                    flex-wrap: wrap;
                 }
             }
 
@@ -118,7 +134,7 @@
             .add-pdf-icon {
                 width: 30px;
                 position: absolute;
-                bottom: 4px;
+                bottom: 55px;
                 right: 20px;
 
                 &:hover {
@@ -145,6 +161,7 @@
         rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     form {
         width: 60%;
+        max-height: 80%;
         height: max-content;
         flex-direction: column;
         display: flex;
@@ -154,7 +171,7 @@
         margin-top: 6%;
         border-radius: 8px;
         position: relative;
-
+        overflow-y: auto;
         .input-button {
             box-sizing: border-box;
             padding: 8px 18px;
@@ -164,11 +181,11 @@
             background-color: #064539;
             margin-bottom: 20px;
             transition: 0.4s;
-
+            margin-top: 30px;
             &:hover {
                 background-color: #e3e3e3;
                 color: #064539;
-                cursor:  pointer;
+                cursor: pointer;
             }
         }
 
@@ -243,6 +260,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    overflow-y: auto;
 
     input {
         width: 48%;
