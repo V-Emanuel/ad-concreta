@@ -4,8 +4,8 @@
         <x-vg />
     </a>
 
-    <a class="options" href="clientes">Clientes</a>
-    <a class="options" href="atendimentos">Atendimentos</a>
+    <a class="options" href="{{route('clientes')}}">Clientes</a>
+    <a class="options" href="{{route('atendimentos')}}">Atendimentos</a>
 
     <div class="user-button">
         <x-dropdown align="right" width="48">

@@ -1,16 +1,11 @@
 <x-app-layout>
     <div class="clients-content">
         <ul class="clients-column">
-            <button onclick="mostrarComponente('form')"><x-user-icon /> Novo Cliente</button>
-            <button onclick="mostrarComponente('atendimentos')"><x-list-icon /> Clientes</button>
+
         </ul>
-
-        <div id="clients-form" class="clients-options">
-            <x-form-cliente />
-        </div>
-
-        <div id="clients-atendimentos" style="display: none;" class="clients-options">
-            <x-clientes />
+   
+        <div id="clients-select" class="clients-options">
+            <x-cliente-page :cliente="$cliente"/>
         </div>
 
         <div class="clients-filter" style="display: none;">

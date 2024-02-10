@@ -13,9 +13,9 @@ class ClientePage extends Component
      * Create a new component instance.
      */
     public $cliente;
-    public function __construct()
+    public function __construct($cliente)
     {
-        $this->cliente = Cliente::find(3);
+        $this->cliente = $cliente;
     }
 
     /**

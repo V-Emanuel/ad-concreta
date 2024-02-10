@@ -12,6 +12,6 @@ class AtendimentoController extends Controller
     public function create(Request $request)
     {
         $data = array_merge($request->all(), ['user_id' => Auth::id()]);
-       Atendimento::create($request->all());
+       Atendimento::create($data);
     }
 }

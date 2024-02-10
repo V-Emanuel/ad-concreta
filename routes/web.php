@@ -25,6 +25,7 @@ Route::get('/', function () {
 
 Route::get('/clientes', [HeaderViewsController::class, 'clientsView'])->middleware(['auth', 'verified'])->name('clientes');
 Route::get('/atendimentos', [HeaderViewsController::class, 'appointmentsView'])->middleware(['auth', 'verified'])->name('atendimentos');
+Route::get('/clientes/{id}', [HeaderViewsController::class, 'clientIdView'])->middleware(['auth', 'verified'])->name('clienteId');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

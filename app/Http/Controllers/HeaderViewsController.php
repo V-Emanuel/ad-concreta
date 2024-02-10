@@ -29,4 +29,11 @@ class HeaderViewsController extends Controller
 
         return view("header.clientes", compact("clientes", "cidades", "ramos"));
     }
+
+    public function clientIdView($id)
+    {
+        $cliente = Cliente::find($id);
+
+        return view("header.clienteById", compact("cliente"));
+    }
 }
