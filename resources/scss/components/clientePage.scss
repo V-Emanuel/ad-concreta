@@ -77,14 +77,14 @@
             padding: 28px 6px;
             position: relative;
 
-            .ul-documents {
+            .list-documents {
                 width: 100%;
                 max-height: 80%;
                 overflow-y: auto;
                 display: flex;
                 flex-direction: column;
                 margin-left: 30px;
-                li {
+                a {
                     display: flex;
                     width: 80%;
                     height: max-content;
@@ -93,7 +93,7 @@
                     flex-direction: column;
                     font-family: "Metropolis-Bold";
                     font-size: 18px;
-                    background-color: #d3d3d3;
+                    background-color: #f3d79f;
                     box-sizing: border-box;
                     padding: 8px 8px 8px 8px;
                     border-radius: 8px;
@@ -106,7 +106,7 @@
                             font-family: "Montserrat-Medium";
                             flex-wrap: wrap;
                         }
-                        a {
+                        .type-document-icon {
                             width: 26px;
                             margin-right: 6px;
                         }

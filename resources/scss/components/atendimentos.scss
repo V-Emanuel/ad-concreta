@@ -141,3 +141,48 @@
         }
     }
 }
+
+@media (max-width: 1400px) {
+    .appointments-list {
+        p {
+            font-size: 22px;
+
+            .appointments-search {
+                :nth-child(1) {
+                    width: 28px;
+                }
+                :nth-child(2) {
+                    font-size: 13px;
+                }
+            }
+        }
+
+        .appointments-ul {
+            .searchable-li {
+                padding: 28px 16px;
+
+                h1 {
+                    font-size: 20px;
+                }
+
+                h3 {
+                    font-size: 12px;
+                }
+
+                .appointment-info {
+                    .appointment-data {
+                        h2 {
+                            font-size: 18px;
+                            margin-bottom: 6px;
+                        }
+
+                        h4 {
+                            margin-left: 18px;
+                            margin-bottom: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

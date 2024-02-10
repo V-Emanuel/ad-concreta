@@ -43,6 +43,7 @@
         :nth-child(1) {
             width: 24px;
             margin-right: 10px;
+            margin-bottom: 1px;
             color: #000;
             opacity: 0.8;
         }
@@ -63,6 +64,7 @@
 }
 
 .appointments-filter {
+    overflow-y: auto;
     width: 16%;
     box-sizing: border-box;
     padding-top: 2%;
@@ -131,6 +133,59 @@
                 border: none;
                 border-radius: 6px;
                 margin-left: 8px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1400px) {
+    .appointments-column {
+        button {
+            width: 85%;
+            font-size: 14px;
+
+            :nth-child(1) {
+                width: 22px;
+            }
+
+            &:hover {
+                background-color: #b3b3b3;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .appointments-filter {
+        p {
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 14px;
+            padding-top: 10px;
+        }
+
+        .checkbox-container {
+            :nth-child(1) {
+                width: 15px;
+                height: 15px;
+            }
+
+            :nth-child(2) {
+                font-size: 12px;
+            }
+        }
+
+        .date-filter-container {
+            font-size: 12px;
+            span {
+                margin-left: 20px;
+
+                input {
+                    font-size: 12px;
+                    width: 140px;
+                    height: 34px;
+                }
             }
         }
     }
