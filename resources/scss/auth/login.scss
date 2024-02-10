@@ -22,7 +22,7 @@
             margin-bottom: 12px;
         }
         h1 {
-            color: $font;
+            color: $secondary;
             font-size: 32px;
             font-family: "Futura-Medium";
             letter-spacing: 8px;
@@ -50,7 +50,7 @@
             align-items: center;
             box-sizing: border-box;
             padding: 80px 60px 40px 60px;
-            transition:0.5s;
+            transition: 0.5s;
             position: fixed;
             right: 40px;
             z-index: 6;
@@ -58,7 +58,7 @@
             p {
                 font-family: "Metropolis-Black";
                 font-size: 44px;
-                color: $font;
+                color: $secondary;
             }
 
             h2 {
@@ -115,7 +115,16 @@
             .remember-container {
                 color: #fff;
                 font-size: 16px;
-                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+
+                :nth-child(1) {
+                    margin-right: 8px;
+                }
+
+                :nth-child(2) {
+                    margin-top: 2px;
+                }
             }
 
             .auth-button-container {
@@ -150,7 +159,7 @@
                         cursor: pointer;
                         background-color: $secondary;
                     }
-                    &:not(:hover){
+                    &:not(:hover) {
                         transition: 0.3s;
                     }
                 }
@@ -165,4 +174,66 @@
 
 .hide-form {
     transform: translateX(120%);
+}
+
+@media (max-width: 1400px) {
+    .auth-container {
+        .auth-left-content {
+            h1 {
+                font-size: 26px;
+            }
+        }
+
+        .auth-right-content {
+            form {
+                width: 34%;
+                padding: 60px 40px 40px 40px;
+
+                p {
+                    font-size: 36px;
+                }
+
+                h2 {
+                    font-size: 16px;
+                    margin-top: 16px;
+                    margin-bottom: 40px;
+                }
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                label {
+                    font-size: 18px;
+                }
+
+                .auth-input {
+                    width: 100%;
+                    height: 42px;
+                }
+
+                .vg-svg {
+                    width: 50px;
+                }
+
+                .remember-container {
+                    color: #fff;
+                    font-size: 14px;
+                    margin-bottom: 28px;
+                }
+
+                .auth-button-container {
+                    font-size: 15px;
+                    a {
+                        margin-bottom: 0px;
+                    }
+
+                    button {
+                        font-size: 20px;
+                        margin-top: 30px;
+                    }
+                }
+            }
+        }
+    }
 }

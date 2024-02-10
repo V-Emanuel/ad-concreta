@@ -34,7 +34,7 @@
                 <label class="remember-container" for="remember_me">
                     <input id="remember_me" type="checkbox"
                         class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                    <span>{{ __('Remember me') }}</span>
+                    <span>{{ __('Lembre-me') }}</span>
                 </label>
                 <div class="auth-button-container">
 
