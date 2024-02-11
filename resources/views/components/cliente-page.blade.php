@@ -26,7 +26,7 @@
                 @foreach($cliente->documentos as $docs)
                 <a href="{{$docs['url']}}" target="_blank">
                     <div>
-                        <div class="type-document-icon" >
+                        <div class="type-document-icon">
                             @if($docs['type'] === 'pdf')
                             <x-pdf-gray />
                             @else
@@ -39,10 +39,10 @@
                 </a>
                 @endforeach
             </ul>
-            <span class="add-pdf-icon">
-                <x-add-pdf />
-            </span>
         </div>
+        <span class="add-pdf-icon">
+            <x-add-pdf />
+        </span>
     </div>
 </div>
 
@@ -100,7 +100,6 @@
                 descricaoInput.name = `descricoes[${i}]`;
                 descricaoInput.placeholder = 'Descrição do Documento';
 
-                // Adiciona os campos ao formulário
                 camposExtras.appendChild(nomeInput);
                 camposExtras.appendChild(descricaoInput);
             }

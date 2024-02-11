@@ -15,6 +15,8 @@ class ClientesSeeder extends Seeder
     public function run(): void
     {
         $clientes = [];
+        $date = Carbon::now();
+
         for ($i = 1; $i <= 20; $i++) {
             $endereco = [
                 'cep' => '58429-100',
@@ -28,8 +30,14 @@ class ClientesSeeder extends Seeder
             $documentos = []; // Pode ser vazio ou adicionar documentos, conforme necessário.
 
             $observacoes = [
-                'Observação 1 para Cliente ' . $i,
-                'Observação 2 para Cliente ' . $i,
+                [
+                    "texto" => 'Observação 1 para Cliente ' . $i,
+                    "data" => $date->format('Y-m-d H:i:s')
+                ],
+                [
+                    "texto" => 'Observação 1 para Cliente ' . $i,
+                    "data" => $date->format('Y/m/d - H:i:s')
+                ]
             ];
 
             $clientes[] = [

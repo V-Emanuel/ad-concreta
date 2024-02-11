@@ -1,12 +1,21 @@
 <x-app-layout>
     <div class="clients-content">
         <ul class="clients-column">
+            <button onclick="mostrarComponente('info')"><x-user-icon /> Cliente</button>
+            <button onclick="mostrarComponente('observacoes')"><x-list-icon /> Observações</button>
+            <button onclick="mostrarComponente('documentos')"><x-list-icon /> Gerar Documentos</button>
 
         </ul>
-   
-        <div id="clients-select" class="clients-options">
-            <x-cliente-page :cliente="$cliente"/>
+
+        <div id="client-info" class="clients-options">
+            <x-cliente-page :cliente="$cliente" />
         </div>
+        <div id="client-observacoes" style="display: none;" class="clients-options">
+            <x-client-obs :cliente="$cliente"/>
+        </div>
+        <div id="client-documentos" style="display: none;" class="clients-options">
+            
+            </div>
 
         <div class="clients-filter" style="display: none;">
 
@@ -24,83 +33,17 @@
                 componente.style.display = 'none';
             });
 
-            if (componenteId === "form") {
+            if (componenteId === "info") {
                 filter.style.display = 'none';
             } else {
                 filter.style.display = 'flex';
             }
 
-            let componenteSelecionado = document.getElementById('clients-' + componenteId);
+            let componenteSelecionado = document.getElementById('client-' + componenteId);
             if (componenteSelecionado) {
                 componenteSelecionado.style.display = 'flex';
             }
         }
-
-        document.getElementById('searchInput').addEventListener('input', function () {
-
-            let searchTerm = this.value.toLowerCase();
-
-            let searchResults = document.getElementById('searchResults');
-            let items = searchResults.getElementsByClassName('searchable-li');
-            let names = searchResults.getElementsByClassName('searchable-content');
-
-            for (let i = 0; i < items.length; i++) {
-                let name = names[i];
-                let item = items[i]
-                let textContent = name.textContent || name.innerText;
-
-                if (textContent.toLowerCase().includes(searchTerm)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-
-            document.querySelectorAll('.checkbox-cidade').forEach(function (checkbox) {
-                checkbox.addEventListener('change', function () {
-                    filterAtendimentos();
-                });
-            });
-
-            document.querySelectorAll('.checkbox-ramo').forEach(function (checkbox) {
-                checkbox.addEventListener('change', function () {
-                    filterAtendimentos();
-                });
-            });
-
-            document.getElementById('startDate').addEventListener('change', function () {
-                filterAtendimentos();
-            });
-
-            document.getElementById('endDate').addEventListener('change', function () {
-                filterAtendimentos();
-            });
-
-            function filterAtendimentos() {
-                let cidadesSelecionadas = Array.from(document.querySelectorAll('.checkbox-cidade:checked')).map(checkbox => checkbox.dataset.cidade);
-                let ramosSelecionados = Array.from(document.querySelectorAll('.checkbox-ramo:checked')).map(checkbox => checkbox.dataset.ramo);
-                let startDate = document.getElementById('startDate').value;
-                let endDate = document.getElementById('endDate').value;
-
-                let atendimentos = document.getElementsByClassName('searchable-li');
-
-                for (let i = 0; i < atendimentos.length; i++) {
-                    let atendimento = atendimentos[i];
-                    let cidadeAtendimento = atendimento.dataset.cidade;
-                    let ramoAtendimento = atendimento.dataset.ramo;
-                    let dataAtendimento = atendimento.dataset.data;
-
-                    let cidadeFiltrada = cidadesSelecionadas.length === 0 || cidadesSelecionadas.includes(cidadeAtendimento);
-                    let ramoFiltrado = ramosSelecionados.length === 0 || ramosSelecionados.includes(ramoAtendimento);
-                    let dataFiltrada = (startDate === '' || dataAtendimento >= startDate) && (endDate === '' || dataAtendimento <= endDate);
-
-                    atendimento.style.display = cidadeFiltrada && ramoFiltrado && dataFiltrada ? 'block' : 'none';
-                }
-            }
-        });
 
     </script>
 </x-app-layout>
