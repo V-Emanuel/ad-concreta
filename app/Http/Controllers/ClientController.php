@@ -7,6 +7,7 @@ use App\Models\Cliente;
 use App\Services\S3Service;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 
 class ClientController extends Controller
 {
@@ -102,6 +103,6 @@ class ClientController extends Controller
 
         $cliente->save();
 
-        return redirect()->route('clientes')->with('success', 'Documento(s) cadastrados com sucesso!');
+        return Redirect::route('clienteId',  $dataRequest['cliente_id']);
     }
 }

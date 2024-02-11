@@ -81,9 +81,7 @@
         });
 
         document.querySelector('.input-files').addEventListener('change', function (event) {
-
             const files = event.target.files;
-
             const camposExtras = document.querySelector('.camposExtras');
             camposExtras.innerHTML = '';
 
@@ -94,6 +92,8 @@
                 nomeInput.type = 'text';
                 nomeInput.name = `nomes[${i}]`;
                 nomeInput.placeholder = 'Nome do Documento';
+                // Defina o valor padrão como o nome do arquivo original
+                nomeInput.value = file.name;
 
                 const descricaoInput = document.createElement('input');
                 descricaoInput.type = 'text';
@@ -104,5 +104,6 @@
                 camposExtras.appendChild(descricaoInput);
             }
         });
+
     });
 </script>

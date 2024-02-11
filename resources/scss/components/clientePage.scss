@@ -107,7 +107,7 @@
                     flex-direction: column;
                     font-family: "Metropolis-Bold";
                     font-size: 18px;
-                    background-color: #f3d79f;
+                    background-color: $dark;
                     box-sizing: border-box;
                     padding: 8px 8px 8px 8px;
                     border-radius: 8px;
@@ -120,6 +120,7 @@
                             font-family: "Montserrat-Medium";
                             flex-wrap: wrap;
                             word-break: break-all;
+                            color: $vg;
                         }
                         .type-document-icon {
                             width: 26px;
@@ -128,7 +129,7 @@
                     }
 
                     h4 {
-                        color: #636363;
+                        color: $vg_soft;
                         width: 90%;
                         font-family: "Montserrat-Medium";
                         font-size: 12px;
