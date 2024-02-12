@@ -14,13 +14,13 @@
                 <div id="confirm-user-deletion-{{$user->id}}" class="col-modal-{{$user->id}} colaborador-modal invisible-colaborador-modal">
                         <form method="post" action="{{ route('profile.destroyByAdmin') }}" class="modal-confirm-form">
                             @csrf
-                            @method('delete')
                             <h3 class="modal-title">Tem certeza de que deseja excluir a conta do(a) colaborador(a) {{$user->name}}?</h3>
                             <h4>Depois que a conta for excluída, todos os seus recursos e dados serão excluídos
                                 permanentemente.
                                 Digite sua senha para confirmar que deseja excluir permanentemente essa conta.</h4>
 
                             <input id="password" name="password" type="password" placeholder="{{ __('Senha') }}" required/>
+                            <input id="password" name="userId" type="hidden" value="{{$user->id}}"/>
 
                             <div class="colaborador-modal-buttons">
                                 <button class="modal-cancel-button">Cancelar</button>

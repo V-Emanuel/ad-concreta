@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -63,12 +64,13 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-
         if (Hash::check($request->input('password'), $user->password)) {
 
+            User::where('id', $request->input('userId'))->delete();
             return redirect()->back()->with('success', 'Senha atualizada com sucesso.');
-        
+
         } else {
+
             return redirect()->back()->with('error', 'Senha atual incorreta. Por favor, tente novamente.');
         }
     }
