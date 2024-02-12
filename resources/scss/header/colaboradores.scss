@@ -6,10 +6,12 @@
     padding-top: 80px;
     padding-left: 4%;
     position: relative;
+    z-index: 9;
 
     .colaboradores-left {
         width: 40%;
         height: 100%;
+        position: relative;
         p {
             font-family: "Metropolis-Black";
             font-size: 32px;
@@ -33,7 +35,7 @@
                 margin-bottom: 10px;
                 padding: 10px 16px;
                 position: relative;
-                z-index: 99;
+                z-index: 9;
                 border-bottom-width: 4px;
                 border-color: $vg;
                 flex-wrap: wrap;
@@ -50,7 +52,7 @@
                     font-size: 16px;
                 }
 
-                button{
+                .delete-colaborador-button{
                     box-sizing: border-box;
                     padding: 8px 14px;
                     background-color: #e32d40;
@@ -76,17 +78,25 @@
     opacity: 0.2;
 }
 
+.visible-colaborador-modal{
+    display: flex;
+}
+
+.invisible-colaborador-modal{
+    display: none;
+}
+
 .colaborador-modal{
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
     background-color: rgba(0, 0, 0, 0.35);
-    display: flex;
     justify-content: center;
     padding-top: 6%;
+    z-index: 9999;
+    order: 9999;
 
     .modal-confirm-form{
         width: 700px;
@@ -94,11 +104,16 @@
         background-color: $secondary;
         padding: 24px 34px;
         border-radius: 12px;
+        flex-wrap: wrap;
 
-        h3{
+        .modal-title{
+            width: 100%;
             font-family: 'Montserrat-Bold';
             font-size: 18px;
             margin-bottom: 2px;
+            color: #000;
+            flex-wrap: wrap;
+            word-break: keep-all;
         }
 
         h4{
@@ -106,6 +121,9 @@
             text-align: justify;
             font-size: 16px;
             margin-bottom: 30px;
+            color: #000;
+            flex-wrap: wrap;
+            word-break: keep-all;
         }
 
         input{
@@ -121,7 +139,7 @@
             justify-content: flex-end;
             margin-top: 20px;
 
-            button{
+            .modal-button, .modal-cancel-button{
                 box-sizing: border-box;
                 padding: 7px 20px;
                 font-family: 'Montserrat-Bold';
