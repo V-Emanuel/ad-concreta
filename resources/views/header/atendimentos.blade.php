@@ -1,18 +1,18 @@
 <x-app-layout>
     <div class="appointments-content">
         <ul class="appointments-column">
-            <button onclick="mostrarComponente('form')"><x-user-icon /> Novo Registro</button>
             <button onclick="mostrarComponente('atendimentos')"><x-list-icon /> Atendimentos</button>
+            <button onclick="mostrarComponente('form')"><x-user-icon /> Novo Registro</button>
         </ul>
-        <div id="appointments-form" class="appointments-options">
+        <div id="appointments-form" style="display: none;" class="appointments-options">
             <x-form-atendimento />
         </div>
 
-        <div id="appointments-atendimentos" style="display: none;" class="appointments-options">
+        <div id="appointments-atendimentos" class="appointments-options">
             <x-atendimentos />
         </div>
 
-        <div class="appointments-filter" style="display: none;">
+        <div class="appointments-filter">
             <p>Filtrar Registros</p>
 
             <h1> Por Cidade: </h1>

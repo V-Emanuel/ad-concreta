@@ -9,7 +9,7 @@ class Atendimento extends Model
 {
     use HasFactory;
     protected $table = 'atendimentos';
-    protected $fillable = ['nome', 'cidadeId', 'ramoId', 'celular', 'texto'];
+    protected $fillable = ['nome', 'cidadeId', 'ramoId', 'celular', 'texto', 'userId'];
 
     // Relacionamento com a tabela 'cidades'
     public function cidade()

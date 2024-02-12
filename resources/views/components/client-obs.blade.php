@@ -11,7 +11,7 @@
     <form method="POST" action="{{ route('cliente.obs') }}" class="close-add-obs add-obs-form">
         @csrf
         <p>Adicionar Observação</p>
-        <input required name="texto" value="texto" id="texto" type="text"/>
+        <input required name="texto" value="" id="texto" type="text"/>
         <input type="hidden" name="cliente_id" value="{{ $cliente->id }}" />
         <span>
         <button type="submit">Adicionar</button>

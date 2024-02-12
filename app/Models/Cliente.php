@@ -25,7 +25,8 @@ class Cliente extends Model
         'estado_nascimento',
         'endereco',
         'documentos',
-        'observacoes'
+        'observacoes',
+        'userId'
     ];
 
     protected $casts = [

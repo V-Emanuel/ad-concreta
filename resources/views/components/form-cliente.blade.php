@@ -26,7 +26,7 @@
         <label>Nome do Pai: </label>
         <input placeholder="Pai" name="nome_pai" required type="text">
         <label>RG:<span style="color: red"> *</span></label>
-        <input placeholder="99.999.999-99" id="rg" name="rg" required type="text">
+        <input placeholder="99.999.999-999" id="rg" name="rg" required type="text">
         <label>CPF:<span style="color: red"> *</span></label>
         <input placeholder="999.999.999-99" id="cpf" name="cpf" required type="text">
         <label>Celular:</label>
@@ -81,7 +81,7 @@
 <script>
     $(document).ready(function () {
         $('#celular').inputmask('(99) 99999-9999', { placeholder: ' ' });
-        $('#rg').inputmask('99.999.999-99', { placeholder: ' ' });
+        $('#rg').inputmask('99.999.999-999', { placeholder: ' ' });
         $('#cpf').inputmask('999.999.999-99', { placeholder: ' ' });
         $('#nascimento').inputmask('99/99/9999', { placeholder: ' ' });
 

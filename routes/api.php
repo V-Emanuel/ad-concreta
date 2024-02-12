@@ -1,7 +1,4 @@
 <?php
-
-use App\Http\Controllers\AtendimentoController;
-use App\Http\Controllers\ClientController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +17,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/atendimento', [AtendimentoController::class, 'create'])->name('atendimento.post');
-Route::post('/cliente', [ClientController::class, 'create'])->name('cliente.post');
-Route::post('/clienteDoc', [ClientController::class, 'updateDocument'])->name('cliente.doc');
-Route::post('/clienteObs', [ClientController::class, 'updadeObservations'])->name('cliente.obs');
+
+

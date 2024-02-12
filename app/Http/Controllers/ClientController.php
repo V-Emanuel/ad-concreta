@@ -52,12 +52,12 @@ class ClientController extends Controller
             'endereco' => $endereco,
             'documentos' => [],
             'observacoes' => [],
-            'user_id' => Auth::id()
+            'userId' => Auth::id()
         ]);
-
+        
         $cliente->save();
 
-        return redirect()->route('clients')->with('success', 'Cliente cadastrado com sucesso!');
+        return redirect()->route('clientes')->with('success', 'Cliente cadastrado com sucesso!');
     }
 
     public function updateDocument(Request $request)

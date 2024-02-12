@@ -1,4 +1,4 @@
-<form class="create-atendimento-component" id="cadastroForm" method="POST">
+<form class="create-atendimento-component" method="POST" action="{{ route('atendimento.post') }}">
     @csrf
     <h6>Novo Registro</h6>
     <label>Nome:<span style="color: red"> *</span></label>
@@ -20,7 +20,7 @@
     <label>Registro do Atendimento:<span style="color: red"> *</span></label>
     <input id="texto-atendimento" name="texto" placeholder="Texto" required type="text" maxlength="200">
     <div class="button-container">
-        <button type="button" id="btnCadastrar">
+        <button type="submit">
             <p>REGISTRAR</p>
         </button>
     </div>
@@ -29,26 +29,3 @@
     </span>
 
 </form>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#celular').inputmask('(99) 99999-9999', { placeholder: ' ' });
-
-        $('#btnCadastrar').click(function () {
-            $.ajax({
-                type: 'POST',
-                url: '{{ route("atendimento.post") }}',
-                data: $('#cadastroForm').serialize(),
-                success: function () {
-                    alert('Cadastro realizado com sucesso!');
-                    $('#cadastroForm')[0].reset();
-                },
-                error: function () {
-                    alert('Ocorreu um erro durante o cadastro.');
-                }
-            });
-        });
-    });
-</script>

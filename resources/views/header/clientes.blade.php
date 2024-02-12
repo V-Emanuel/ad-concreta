@@ -1,15 +1,15 @@
 <x-app-layout>
     <div class="clients-content">
         <ul class="clients-column">
-            <button onclick="mostrarComponente('form')"><x-user-icon /> Novo Cliente</button>
             <button onclick="mostrarComponente('atendimentos')"><x-list-icon /> Clientes</button>
+            <button onclick="mostrarComponente('form')"><x-user-icon /> Novo Cliente</button>
         </ul>
 
-        <div id="clients-form" class="clients-options">
+        <div id="clients-form" style="display: none;" class="clients-options">
             <x-form-cliente />
         </div>
 
-        <div id="clients-atendimentos" style="display: none;" class="clients-options">
+        <div id="clients-atendimentos" class="clients-options">
             <x-clientes />
         </div>
 
