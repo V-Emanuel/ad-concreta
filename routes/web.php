@@ -27,6 +27,7 @@ Route::get('/', function () {
 Route::get('/clientes', [HeaderViewsController::class, 'clientsView'])->middleware(['auth', 'verified'])->name('clientes');
 Route::get('/atendimentos', [HeaderViewsController::class, 'appointmentsView'])->middleware(['auth', 'verified'])->name('atendimentos');
 Route::get('/clientes/{id}', [HeaderViewsController::class, 'clientIdView'])->middleware(['auth', 'verified'])->name('clienteId');
+Route::get('/colaboradores', [HeaderViewsController::class, 'colaboradoresView'])->middleware('admin')->name('colaboradores');
 
 Route::post('/atendimento', [AtendimentoController::class, 'create'])->middleware(['auth', 'verified'])->name('atendimento.post');
 Route::post('/cliente', [ClientController::class, 'create'])->middleware(['auth', 'verified'])->name('cliente.post');
@@ -41,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/profile', [ProfileController::class, 'destroyByAdmin'])->name('profile.destroyByAdmin');
 });
 
 require __DIR__ . '/auth.php';

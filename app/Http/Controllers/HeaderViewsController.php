@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Atendimento;
 use App\Models\Cidade;
@@ -35,5 +36,11 @@ class HeaderViewsController extends Controller
         $cliente = Cliente::find($id);
 
         return view("header.clienteById", compact("cliente"));
+    }
+
+    public function colaboradoresView()
+    {
+        $users = User::where('admin', 0)->get();
+        return view('header.colaboradores', compact("users"));
     }
 }

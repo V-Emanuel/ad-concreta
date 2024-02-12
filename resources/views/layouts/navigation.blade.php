@@ -6,7 +6,9 @@
 
     <a class="options" href="{{route('clientes')}}">Clientes</a>
     <a class="options" href="{{route('atendimentos')}}">Atendimentos</a>
-
+    @if(Auth::user()->admin == 1)
+    <a class="options" href="{{route('colaboradores')}}">Colaboradores</a>
+    @endif
     <div class="user-button">
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">

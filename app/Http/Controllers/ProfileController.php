@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -56,5 +57,19 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function destroyByAdmin(Request $request): RedirectResponse
+    {
+        $user = Auth::user();
+
+
+        if (Hash::check($request->input('password'), $user->password)) {
+
+            return redirect()->back()->with('success', 'Senha atualizada com sucesso.');
+        
+        } else {
+            return redirect()->back()->with('error', 'Senha atual incorreta. Por favor, tente novamente.');
+        }
     }
 }
