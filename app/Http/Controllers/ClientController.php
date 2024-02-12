@@ -8,6 +8,7 @@ use App\Services\S3Service;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
 
 class ClientController extends Controller
 {
@@ -102,6 +103,26 @@ class ClientController extends Controller
         }
 
         $cliente->save();
+
+        return Redirect::route('clienteId',  $dataRequest['cliente_id']);
+    }
+
+    public function updadeObservations(Request $request)
+    {
+        $dataRequest = $request->all();
+
+        $date = Carbon::now();
+        $client = Cliente::find($dataRequest['cliente_id']);
+
+        $obs = ['texto' => $dataRequest['texto'], 'data' => $date->format('d/m/Y H:i:s')];
+
+        if (!empty($client->observacoes)) {
+            $client->observacoes = array_merge([$obs], $client->observacoes);
+        } else {
+            $client->observacoes = [$obs];
+        }
+
+        $client->save();
 
         return Redirect::route('clienteId',  $dataRequest['cliente_id']);
     }

@@ -8,10 +8,11 @@
     <div class="add-annotation-icon">
         <x-annotate-icon />
     </div>
-    <form class="close-add-obs add-obs-form">
+    <form method="POST" action="{{ route('cliente.obs') }}" class="close-add-obs add-obs-form">
         @csrf
         <p>Adicionar Observação</p>
-        <input />
+        <input required name="texto" value="texto" id="texto" type="text"/>
+        <input type="hidden" name="cliente_id" value="{{ $cliente->id }}" />
         <span>
         <button type="submit">Adicionar</button>
         </span>
