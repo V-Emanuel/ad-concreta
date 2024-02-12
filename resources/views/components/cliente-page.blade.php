@@ -8,17 +8,20 @@
     <div class="cliente-content">
         <div class="cliente-content-left">
             <h6>Informaçoes: </h6>
-            <h5><strong>RG: </strong>{{$cliente->rg}}</h5>
-            <h5><strong>CPF: </strong>{{$cliente->cpf}}</h5>
-            <h5><strong>Nome da Mãe: </strong>{{$cliente->nome_mae}}</h5>
-            <h5><strong>Nome do Pai: </strong>{{$cliente->nome_pai}}</h5>
-            <h5><strong>Esdado Civil: </strong>{{$cliente->estado_civil}}</h5>
-            <h5><strong>Naturalidade: </strong>{{$cliente->naturalidade}}</h5>
-            <h5><strong>Celular: </strong>{{$cliente->celular}}</h5>
-            <h5><strong>Profissão: </strong>{{$cliente->profissao}}</h5>
-            <h5><strong>Local de Nascimento: </strong>{{$cliente->cidade_nascimento}} / {{$cliente->estado_nascimento}}
+            <div class="cliente-info-list">
+                <h5><strong>RG: </strong>{{$cliente->rg}}</h5>
+                <h5><strong>CPF: </strong>{{$cliente->cpf}}</h5>
+                <h5><strong>Nome da Mãe: </strong>{{$cliente->nome_mae}}</h5>
+                <h5><strong>Nome do Pai: </strong>{{$cliente->nome_pai}}</h5>
+                <h5><strong>Esdado Civil: </strong>{{$cliente->estado_civil}}</h5>
+                <h5><strong>Naturalidade: </strong>{{$cliente->naturalidade}}</h5>
+                <h5><strong>Celular: </strong>{{$cliente->celular}}</h5>
+                <h5><strong>Profissão: </strong>{{$cliente->profissao}}</h5>
+                <h5><strong>Local de Nascimento: </strong>{{$cliente->cidade_nascimento}} /
+                    {{$cliente->estado_nascimento}}</h5>
                 <h5><strong>Situação: </strong>{{$cliente->situacao}}</h5>
-            </h5>
+
+            </div>
         </div>
         <div class="cliente-content-right">
             <h6>Documentos: </h6>
@@ -35,7 +38,7 @@
                         </div>
                         <p>{{ $docs['nome'] }}</p>
                     </div>
-                    <h4>({{$docs['descricao']}})</h4>
+                    <h4>{{$docs['descricao']}}</h4>
                 </a>
                 @endforeach
             </ul>
@@ -58,7 +61,7 @@
         </div>
         <div class="camposExtras"></div>
         <input class="input-button" type="submit" value="Enviar">
-        <div class="close-form-document">X</div>
+        <div class="close-form-document">✘</div>
     </form>
 </div>
 
@@ -92,13 +95,16 @@
                 nomeInput.type = 'text';
                 nomeInput.name = `nomes[${i}]`;
                 nomeInput.placeholder = 'Nome do Documento';
-                // Defina o valor padrão como o nome do arquivo original
                 nomeInput.value = file.name;
+                nomeInput.required = true;
+                nomeInput.maxLength = 50;
 
                 const descricaoInput = document.createElement('input');
                 descricaoInput.type = 'text';
                 descricaoInput.name = `descricoes[${i}]`;
                 descricaoInput.placeholder = 'Descrição do Documento';
+                descricaoInput.required = true;
+                descricaoInput.maxLength = 150;
 
                 camposExtras.appendChild(nomeInput);
                 camposExtras.appendChild(descricaoInput);

@@ -67,16 +67,22 @@
                 margin-bottom: 10px;
             }
 
-            h5 {
-                font-family: "Montserrat-Medium";
-                font-size: 16px;
-                margin-left: 10px;
-                margin-bottom: 4px;
-                color: #636363;
-                strong {
-                    font-size: 17px;
-                    font-family: "Montserrat-Bold";
-                    color: #434343;
+            .cliente-info-list {
+                max-height: 80%;
+                overflow-y: auto;
+                flex-wrap: wrap;
+                word-break: break-all;
+                h5 {
+                    font-family: "Montserrat-Medium";
+                    font-size: 16px;
+                    margin-left: 10px;
+                    margin-bottom: 4px;
+                    color: #636363;
+                    strong {
+                        font-size: 17px;
+                        font-family: "Montserrat-Bold";
+                        color: #434343;
+                    }
                 }
             }
         }
@@ -146,9 +152,7 @@
                 font-size: 24px;
                 margin-bottom: 10px;
             }
-
         }
-
     }
 }
 .add-document-container {
@@ -174,7 +178,7 @@
         display: flex;
         align-items: center;
         position: relative;
-        background-color: #17a086;
+        background-color: $dark;
         margin-top: 6%;
         border-radius: 8px;
         position: relative;
@@ -185,27 +189,31 @@
             font-family: "Metropolis-Black";
             font-size: 18px;
             border-radius: 8px;
-            background-color: #064539;
+            background-color: $vg_soft;
+            color: $dark;
             margin-bottom: 20px;
             transition: 0.4s;
             margin-top: 30px;
             &:hover {
-                background-color: #e3e3e3;
-                color: #064539;
+                background-color: $vg;
+                $color: #e3e3e3;
                 cursor: pointer;
             }
         }
 
         .close-form-document {
             box-sizing: border-box;
-            padding: 6px 10px;
-            background-color: #000;
+            padding: 4px 10px;
+            border-radius: 14px;
+            background-color: $vg;
+            color: $dark;
             position: absolute;
             top: 10px;
             right: 14px;
-
+            transition: 0.3s;
             &:hover {
                 cursor: pointer;
+                background-color: $vg_soft;
             }
         }
 
@@ -215,6 +223,7 @@
             margin-bottom: 5px;
             margin-top: 10px;
             font-size: 36px;
+            color: $vg;
         }
 
         .input-files-container {
@@ -239,7 +248,7 @@
             p {
                 width: 100%;
                 height: 45px;
-                background-color: #117a60;
+                background-color: $vg;
                 border-radius: 5px;
                 display: flex;
                 align-items: center;
@@ -247,6 +256,8 @@
                 font-family: "Metropolis-Bold";
                 position: relative;
                 z-index: 1;
+                color: #fff;
+                transition: 0.3s;
             }
 
             &:hover {
@@ -254,7 +265,8 @@
                     cursor: pointer;
                 }
                 p {
-                    background-color: #0c5c48;
+                    background-color: $vg_soft;
+                    color: $dark;
                 }
             }
         }
@@ -275,6 +287,7 @@
         border-radius: 5px;
         background-color: #e3e3e3;
         margin-bottom: 14px;
+        color: $dark;
     }
 }
 
