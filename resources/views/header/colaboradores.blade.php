@@ -94,6 +94,7 @@
                     modal.classList.toggle('visible-colaborador-modal');
                     modal.classList.toggle('invisible-colaborador-modal');
                 });
-            }       });
+            });
+        });
     </script>
 </x-app-layout>
