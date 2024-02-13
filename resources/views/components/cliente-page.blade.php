@@ -6,13 +6,14 @@
                 style="background-image: url('https://s.glbimg.com/jo/g1/f/original/2012/04/13/tereza-fotoruim_300_400.jpg')">
             </div>
             @else
-            <form id="image-form" action="{{ route('cliente.img') }}" method="POST" enctype="multipart/form-data">
+            <form class="form-img" id="image-form" action="{{ route('cliente.img') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <label for="circle-img" class="circle-img">
+                <x-edit-image />
+                <label for="circle-img" class="no-img">
                     <x-person-icon />
                 </label>
                 <input type="file" id="circle-img" name="image" class="hidden" accept="image/*">
-                <x-edit-image />
+                
             </form>
 
             @endif
