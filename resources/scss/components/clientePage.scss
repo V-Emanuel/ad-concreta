@@ -48,6 +48,8 @@
                 width: 65px;
                 height: 65px;
                 clip-path: circle(50% at 50% 50%);
+                background-color:transparent;
+
             }
 
             .form-img {
@@ -102,7 +104,7 @@
         display: flex;
         .cliente-content-left {
             box-sizing: border-box;
-            padding: 12px 28px;
+            padding: 18px 28px;
             width: 55%;
             height: 100%;
 
@@ -136,7 +138,7 @@
             width: 45%;
             height: 100%;
             box-sizing: border-box;
-            padding: 12px 6px;
+            padding: 18px 6px;
             position: relative;
             display: flex;
             flex-direction: column;

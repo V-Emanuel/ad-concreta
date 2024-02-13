@@ -3,7 +3,7 @@
         <div class="cliente-foto">
             @if($cliente->url_img)
             <div class="cliente-img  bg-cover bg-center"
-                style="background-image: url('https://s.glbimg.com/jo/g1/f/original/2012/04/13/tereza-fotoruim_300_400.jpg')">
+                style="background-image: url('{{$cliente->url_img}}')">
             </div>
             @else
             <form class="form-img" id="image-form" action="{{ route('cliente.img') }}" method="POST" enctype="multipart/form-data">
@@ -13,6 +13,7 @@
                     <x-person-icon />
                 </label>
                 <input type="file" id="circle-img" name="image" class="hidden" accept="image/*">
+                <input type="hidden"  value="{{$cliente->id}}" id="circle-img" name="cliente_id">
                 
             </form>
 

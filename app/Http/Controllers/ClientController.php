@@ -90,9 +90,7 @@ class ClientController extends Controller
 
             $url = $this->uploadToS3($arquivo, $pathArquivo, 'documentos/' . $clienteNome);
 
-            if (Storage::exists($pathArquivo)) {
-                Storage::delete($pathArquivo);
-            }
+            Storage::delete($pathArquivo);
 
             $dados[] = [
                 'cliente_id' => $dataRequest['cliente_id'],
@@ -136,50 +134,21 @@ class ClientController extends Controller
 
     public function updateImage(Request $request)
     {
-        dd('chegou aq de boa', $request->all());
-
-        if (empty($request->file('arquivos'))) {
-            return redirect()->route('clientes')->with('success', 'Favor Selecionar um documento');
-        }
 
         $dataRequest = $request->all();
 
         $cliente = Cliente::find($dataRequest['cliente_id']);
 
-        $documentos = $cliente->documentos;
+        $nomeImagem = uniqid() . '.' . $dataRequest['image']->getClientOriginalExtension();
+        $pathImagem = storage_path() . '\app\public\imagens\\' . $nomeImagem;
 
-        $clienteNome = $this->removerAcentos($dataRequest['cliente_nome']);
+        $dataRequest['image']->storeAs('imagens', $nomeImagem);
 
-        $clienteNome = $this->removerCaracteresEspeciais($clienteNome);
+        $url = $this->uploadToS3($dataRequest['image'], $pathImagem, 'imagens');
 
-        foreach ($request->file('arquivos') as $index => $arquivo) {
+        Storage::delete($pathImagem);
 
-            $nomeArquivo = uniqid() . '.' . $arquivo->getClientOriginalExtension();
-
-            $pathArquivo = storage_path() . '\app\public\documentos\\' . $nomeArquivo;
-
-            $arquivo->storeAs('documentos', $nomeArquivo);
-
-            $url = $this->uploadToS3($arquivo, $pathArquivo, 'documentos/' . $clienteNome);
-
-            if (Storage::exists($pathArquivo)) {
-                Storage::delete($pathArquivo);
-            }
-
-            $dados[] = [
-                'cliente_id' => $dataRequest['cliente_id'],
-                'nome' => $request->nomes[$index],
-                'descricao' => $request->descricoes[$index],
-                'url' => $url,
-                'type' => $arquivo->getClientOriginalExtension()
-            ];
-        }
-
-        if (!empty($documentos)) {
-            $cliente->documentos = array_merge($cliente->documentos, $dados);
-        } else {
-            $cliente->documentos = $dados;
-        }
+        $cliente->url_img = $url;
 
         $cliente->save();
 
