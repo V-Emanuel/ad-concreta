@@ -33,6 +33,7 @@ Route::post('/atendimento', [AtendimentoController::class, 'create'])->middlewar
 Route::post('/cliente', [ClientController::class, 'create'])->middleware(['auth', 'verified'])->name('cliente.post');
 Route::post('/clienteDoc', [ClientController::class, 'updateDocument'])->middleware(['auth', 'verified'])->name('cliente.doc');
 Route::post('/clienteObs', [ClientController::class, 'updadeObservations'])->middleware(['auth', 'verified'])->name('cliente.obs');
+Route::post('/clienteImg', [ClientController::class, 'updateImage'])->middleware(['auth', 'verified'])->name('cliente.img');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

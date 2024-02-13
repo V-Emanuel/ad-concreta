@@ -133,4 +133,56 @@ class ClientController extends Controller
 
         return redirect()->back()->with('success', 'Senha atualizada com sucesso.');
     }
+
+    public function updateImage(Request $request)
+    {
+        dd('chegou aq de boa', $request->all());
+
+        if (empty($request->file('arquivos'))) {
+            return redirect()->route('clientes')->with('success', 'Favor Selecionar um documento');
+        }
+
+        $dataRequest = $request->all();
+
+        $cliente = Cliente::find($dataRequest['cliente_id']);
+
+        $documentos = $cliente->documentos;
+
+        $clienteNome = $this->removerAcentos($dataRequest['cliente_nome']);
+
+        $clienteNome = $this->removerCaracteresEspeciais($clienteNome);
+
+        foreach ($request->file('arquivos') as $index => $arquivo) {
+
+            $nomeArquivo = uniqid() . '.' . $arquivo->getClientOriginalExtension();
+
+            $pathArquivo = storage_path() . '\app\public\documentos\\' . $nomeArquivo;
+
+            $arquivo->storeAs('documentos', $nomeArquivo);
+
+            $url = $this->uploadToS3($arquivo, $pathArquivo, 'documentos/' . $clienteNome);
+
+            if (Storage::exists($pathArquivo)) {
+                Storage::delete($pathArquivo);
+            }
+
+            $dados[] = [
+                'cliente_id' => $dataRequest['cliente_id'],
+                'nome' => $request->nomes[$index],
+                'descricao' => $request->descricoes[$index],
+                'url' => $url,
+                'type' => $arquivo->getClientOriginalExtension()
+            ];
+        }
+
+        if (!empty($documentos)) {
+            $cliente->documentos = array_merge($cliente->documentos, $dados);
+        } else {
+            $cliente->documentos = $dados;
+        }
+
+        $cliente->save();
+
+        return Redirect::route('clienteId', $dataRequest['cliente_id']);
+    }
 }

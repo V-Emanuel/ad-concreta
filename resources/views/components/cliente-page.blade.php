@@ -1,7 +1,21 @@
 <div class="cliente-page ">
     <header>
         <div class="cliente-foto">
-            <x-person-icon />
+            @if($cliente->url_img)
+            <div class="cliente-img  bg-cover bg-center"
+                style="background-image: url('https://s.glbimg.com/jo/g1/f/original/2012/04/13/tereza-fotoruim_300_400.jpg')">
+            </div>
+            @else
+            <form id="image-form" action="{{ route('cliente.img') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <label for="circle-img" class="circle-img">
+                    <x-person-icon />
+                </label>
+                <input type="file" id="circle-img" name="image" class="hidden" accept="image/*">
+                <x-edit-image />
+            </form>
+
+            @endif
         </div>
         <p class="cliente-nome">{{$cliente->nome}}</p>
     </header>
@@ -54,7 +68,7 @@
         @csrf
         <label for="arquivos">Selecione os documentos:</label>
         <input type="hidden" name="cliente_id" value="{{ $cliente->id }}" />
-        <input type="hidden" name="cliente_nome" value="{{$cliente->nome}}"/>
+        <input type="hidden" name="cliente_nome" value="{{$cliente->nome}}" />
         <div class="input-files-container">
             <input class="arquivos input-files" type="file" name="arquivos[]" accept=".pdf, .png, .jpg, .jpeg" required
                 multiple>
@@ -112,5 +126,14 @@
             }
         });
 
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageForm = document.getElementById('image-form');
+        const circleImg = document.getElementById('circle-img');
+
+        circleImg.addEventListener('change', function () {
+            imageForm.submit();
+        });
     });
 </script>
