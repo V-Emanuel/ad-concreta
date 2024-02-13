@@ -54,7 +54,7 @@
         @csrf
         <label for="arquivos">Selecione os documentos:</label>
         <input type="hidden" name="cliente_id" value="{{ $cliente->id }}" />
-        <input type="hidden" name="cliente_npme" value="{{$cliente->nome}}"/>
+        <input type="hidden" name="cliente_nome" value="{{$cliente->nome}}"/>
         <div class="input-files-container">
             <input class="arquivos input-files" type="file" name="arquivos[]" accept=".pdf, .png, .jpg, .jpeg" required
                 multiple>

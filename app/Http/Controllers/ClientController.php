@@ -14,6 +14,7 @@ use App\Services\Helpers;
 class ClientController extends Controller
 {
     use S3Service;
+    use Helpers;
     public function create(Request $request)
     {
 
