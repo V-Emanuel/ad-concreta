@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->string('nascimento');
             $table->string('cidade_nascimento');
             $table->string('estado_nascimento');
+            $table->string('url_img');
             $table->json('endereco');
             $table->json('documentos');
             $table->json('observacoes');

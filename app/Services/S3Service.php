@@ -6,9 +6,8 @@ use Aws\S3\S3Client;
 
 trait S3Service
 {
-    public function uploadToS3($file, $pathArquivo, $directory = 'documentos')
+    public function uploadToS3($file, $pathArquivo, $directory)
     {
-
 
         $s3 = new S3Client([
             'version' => 'latest',

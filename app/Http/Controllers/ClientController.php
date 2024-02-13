@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
+use App\Services\Helpers;
 
 class ClientController extends Controller
 {
@@ -50,11 +51,12 @@ class ClientController extends Controller
             'cidade_nascimento' => $data['cidade_nascimento'] ?? 'null',
             'estado_nascimento' => $data['estado_nascimento'] ?? 'null',
             'endereco' => $endereco,
+            'url_img' => "",
             'documentos' => [],
             'observacoes' => [],
             'userId' => Auth::id()
         ]);
-        
+
         $cliente->save();
 
         return redirect()->route('clientes')->with('success', 'Cliente cadastrado com sucesso!');
@@ -73,6 +75,10 @@ class ClientController extends Controller
 
         $documentos = $cliente->documentos;
 
+        $clienteNome = $this->removerAcentos($dataRequest['cliente_nome']);
+
+        $clienteNome = $this->removerCaracteresEspeciais($clienteNome);
+
         foreach ($request->file('arquivos') as $index => $arquivo) {
 
             $nomeArquivo = uniqid() . '.' . $arquivo->getClientOriginalExtension();
@@ -81,7 +87,7 @@ class ClientController extends Controller
 
             $arquivo->storeAs('documentos', $nomeArquivo);
 
-            $url = $this->uploadToS3($arquivo, $pathArquivo);
+            $url = $this->uploadToS3($arquivo, $pathArquivo, 'documentos/' . $clienteNome);
 
             if (Storage::exists($pathArquivo)) {
                 Storage::delete($pathArquivo);
@@ -104,7 +110,7 @@ class ClientController extends Controller
 
         $cliente->save();
 
-        return Redirect::route('clienteId',  $dataRequest['cliente_id']);
+        return Redirect::route('clienteId', $dataRequest['cliente_id']);
     }
 
     public function updadeObservations(Request $request)
@@ -124,6 +130,6 @@ class ClientController extends Controller
 
         $client->save();
 
-        return Redirect::route('clienteId',  $dataRequest['cliente_id']);
+        return Redirect::route('clienteId', $dataRequest['cliente_id']);
     }
 }

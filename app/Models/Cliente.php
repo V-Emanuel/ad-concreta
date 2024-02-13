@@ -24,6 +24,7 @@ class Cliente extends Model
         'cidade_nascimento',
         'estado_nascimento',
         'endereco',
+        'url_img',
         'documentos',
         'observacoes',
         'userId'
