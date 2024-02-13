@@ -131,6 +131,6 @@ class ClientController extends Controller
 
         $client->save();
 
-        return Redirect::route('clienteId', $dataRequest['cliente_id']);
+        return redirect()->back()->with('success', 'Senha atualizada com sucesso.');
     }
 }

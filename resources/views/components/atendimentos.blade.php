@@ -2,7 +2,7 @@
     <p>Atendimentos
         <span class="appointments-search">
             <x-search-icon />
-            <input type="text" id="searchInput" placeholder="Pesquisar por nome">
+            <input class="focus:outline-none" type="text" id="searchInput" placeholder="Pesquisar por nome">
 
         </span>
     </p>
