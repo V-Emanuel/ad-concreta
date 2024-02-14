@@ -43,4 +43,10 @@ class HeaderViewsController extends Controller
         $users = User::where('admin', 0)->get();
         return view('header.colaboradores', compact("users"));
     }
+
+    public function calendarioView()
+    {
+
+        return view('header.calendario');
+    }
 }
