@@ -26,18 +26,18 @@
         let year = today.getFullYear();
 
         const months = [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro",
         ];
 
         // const eventsArr = [
@@ -219,7 +219,7 @@
         gotoBtn.addEventListener("click", gotoDate);
 
         function gotoDate() {
-            console.log("here");
+            console.log("Aqui");
             const dateArr = dateInput.value.split("/");
             if (dateArr.length === 2) {
                 if (dateArr[0] > 0 && dateArr[0] < 13 && dateArr[1].length === 4) {
@@ -229,13 +229,15 @@
                     return;
                 }
             }
-            alert("Invalid Date");
+            alert("Data Inválida");
         }
 
         //function get active day day name and date and update eventday eventdate
         function getActiveDay(date) {
             const day = new Date(year, month, date);
-            const dayName = day.toString().split(" ")[0];
+            const diasAbreviados = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+            const indiceDoDiaDaSemana = day.getDay();
+            const dayName = diasAbreviados[indiceDoDiaDaSemana];
             eventDay.innerHTML = dayName;
             eventDate.innerHTML = date + " " + months[month] + " " + year;
         }
@@ -264,7 +266,7 @@
             });
             if (events === "") {
                 events = `<div class="no-event">
-            <h3>No Events</h3>
+            <h3>Sem Eventos</h3>
         </div>`;
             }
             eventsContainer.innerHTML = events;
@@ -286,27 +288,31 @@
             }
         });
 
-        //allow 50 chars in eventtitle
+
         addEventTitle.addEventListener("input", (e) => {
             addEventTitle.value = addEventTitle.value.slice(0, 60);
         });
 
-        //allow only time in eventtime from and to
-        addEventFrom.addEventListener("input", (e) => {
+
+        addEventFrom.addEventListener("input", function () {
             addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
-            if (addEventFrom.value.length === 2) {
+
+            if (addEventFrom.value.length === 2 && addEventFrom.value.indexOf(":") === -1) {
                 addEventFrom.value += ":";
             }
+
             if (addEventFrom.value.length > 5) {
                 addEventFrom.value = addEventFrom.value.slice(0, 5);
             }
         });
 
-        addEventTo.addEventListener("input", (e) => {
+        addEventTo.addEventListener("input", function () {
             addEventTo.value = addEventTo.value.replace(/[^0-9:]/g, "");
-            if (addEventTo.value.length === 2) {
+
+            if (addEventTo.value.length === 2 && addEventTo.value.indexOf(":") === -1) {
                 addEventTo.value += ":";
             }
+
             if (addEventTo.value.length > 5) {
                 addEventTo.value = addEventTo.value.slice(0, 5);
             }
