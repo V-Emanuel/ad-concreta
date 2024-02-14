@@ -28,7 +28,7 @@ Route::get('/clientes', [HeaderViewsController::class, 'clientsView'])->middlewa
 Route::get('/atendimentos', [HeaderViewsController::class, 'appointmentsView'])->middleware(['auth', 'verified'])->name('atendimentos');
 Route::get('/clientes/{id}', [HeaderViewsController::class, 'clientIdView'])->middleware(['auth', 'verified'])->name('clienteId');
 Route::get('/colaboradores', [HeaderViewsController::class, 'colaboradoresView'])->middleware('admin')->name('colaboradores');
-Route::get('/calendario', [HeaderViewsController::class, 'calendarioView'])->middleware('admin')->name('calendario');
+Route::get('/calendario', [HeaderViewsController::class, 'calendarioView'])->middleware(['auth', 'verified'])->name('calendario');
 
 Route::post('/atendimento', [AtendimentoController::class, 'create'])->middleware(['auth', 'verified'])->name('atendimento.post');
 Route::post('/cliente', [ClientController::class, 'create'])->middleware(['auth', 'verified'])->name('cliente.post');
