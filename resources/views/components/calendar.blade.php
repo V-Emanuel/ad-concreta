@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="add-event-footer">
-          <button class="add-event-btn">Adicionar Evento</button>
+          <button type="submit" class="add-event-btn">Adicionar Evento</button>
         </div>
       </form>
     </div>
