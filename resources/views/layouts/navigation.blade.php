@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="navigation">
 
-    <a class="vg" href="dashboard">
+    <a class="vg" href="{{route('dashboard')}}">
         <x-vg />
     </a>
 
