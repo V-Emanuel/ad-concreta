@@ -21,11 +21,18 @@ class AgendamentosSeeder extends Seeder
 
         for ($i = 0; $i < $quantidadeRegistros; $i++) {
 
-            $date = $faker->dateTimeBetween('-1 year', '+1 year');
+            $ano = rand(2020, 2025); 
+            $mes = rand(1, 12); 
+            $dia = rand(1, 28); 
+
+            $hora = rand(0, 23); 
+            $minuto = rand(0, 59); 
+
+            $date = sprintf('%04d-%02d-%02d %02d:%02d:00', $ano, $mes, $dia, $hora, $minuto);
 
             DB::table('agendamentos')->insert([
                 'texto' => $faker->sentence,
-                'hora' => $date->format('H:i'),
+                'hora' => $date,
                 'created_at' => $date,
                 'updated_at' => $date,
             ]);

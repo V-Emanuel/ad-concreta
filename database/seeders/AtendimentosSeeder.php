@@ -15,12 +15,22 @@ class AtendimentosSeeder extends Seeder
     public function run(): void
     {
         $atendimentos = [];
+
         $faker = Faker::create();
-        $date = $faker->dateTimeBetween('-1 year', '+1 year');
 
         for ($i = 1; $i <= 50; $i++) {
+
+            $ano = rand(2020, 2025); 
+            $mes = rand(1, 12); 
+            $dia = rand(1, 28); 
+
+            $hora = rand(0, 23); 
+            $minuto = rand(0, 59); 
+
+            $date = sprintf('%04d-%02d-%02d %02d:%02d:00', $ano, $mes, $dia, $hora, $minuto);
+
             $atendimentos[] = [
-                'nome' => 'Cliente ' . $i,
+                'nome' => $faker->name,
                 'cidadeId' => rand(1, 5),
                 'ramoId' => rand(1, 7),
                 'celular' => '9' . rand(100000000, 999999999),

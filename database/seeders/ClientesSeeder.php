@@ -17,7 +17,6 @@ class ClientesSeeder extends Seeder
     {
         $clientes = [];
         $faker = Faker::create();
-        $date = $faker->dateTimeBetween('-1 year', '+1 year');
 
         for ($i = 1; $i <= 20; $i++) {
             $endereco = [
@@ -29,21 +28,30 @@ class ClientesSeeder extends Seeder
                 'numero' => '808',
             ];
 
-            $documentos = []; // Pode ser vazio ou adicionar documentos, conforme necessário.
+            $ano = rand(2020, 2024); 
+            $mes = rand(1, 12);
+            $dia = rand(1, 28); 
+
+            $hora = rand(0, 23); 
+            $minuto = rand(0, 59); 
+
+            $date = sprintf('%04d-%02d-%02d %02d:%02d:00', $ano, $mes, $dia, $hora, $minuto);
+
+            $documentos = []; 
 
             $observacoes = [
                 [
                     "texto" => 'Observação 1 para Cliente ' . $i,
-                    "data" => $date->format('Y-m-d H:i:s')
+                    "data" => $date
                 ],
                 [
                     "texto" => 'Observação 1 para Cliente ' . $i,
-                    "data" => $date->format('Y/m/d - H:i:s')
+                    "data" => $date
                 ]
             ];
 
             $clientes[] = [
-                'nome' => 'Cliente ' . $i,
+                'nome' => $faker->name,
                 'situacao' => 'Ativo',
                 'celular' => '9' . rand(100000000, 999999999),
                 'naturalidade' => 'Naturalidade Cliente ' . $i,
