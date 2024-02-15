@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             CidadesSeeder::class,
             RamosSeeder::class,
             AtendimentosSeeder::class,
-            ClientesSeeder::class
+            ClientesSeeder::class,
+            AgendamentosSeeder::class
         ]);
     }
 }

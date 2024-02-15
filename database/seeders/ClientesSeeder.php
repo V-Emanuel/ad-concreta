@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Faker\Factory as Faker;
 
 class ClientesSeeder extends Seeder
 {
@@ -15,7 +16,8 @@ class ClientesSeeder extends Seeder
     public function run(): void
     {
         $clientes = [];
-        $date = Carbon::now();
+        $faker = Faker::create();
+        $date = $faker->dateTimeBetween('-1 year', '+1 year');
 
         for ($i = 1; $i <= 20; $i++) {
             $endereco = [
@@ -59,8 +61,8 @@ class ClientesSeeder extends Seeder
                 'observacoes' => json_encode($observacoes),
                 'url_img' => "",
                 'userId' => rand(1, 5),
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => $date,
+                'updated_at' => $date,
             ];
         }
 
