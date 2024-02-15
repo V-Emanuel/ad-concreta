@@ -14,7 +14,6 @@
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-
     .form-inputs-container {
         width: 64%;
         display: flex;
@@ -134,5 +133,30 @@
     }
     .sexto {
         width: 45%;
+    }
+}
+
+@media (max-width: 1400px) {
+    .create-cliente-component {
+        padding: 20px 0px;
+
+        .form-inputs-container {
+            label {
+                font-size: 14px;
+            }
+            input,
+            select {
+                padding: 5px 10px;
+                font-size: 13px;
+            }
+        }
+    }
+
+    .cliente-endereco-container {
+        .endereco-section {
+            h6 {
+                font-size: 14px;
+            }
+        }
     }
 }
