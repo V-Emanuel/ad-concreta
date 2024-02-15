@@ -6,6 +6,8 @@
 
     <a class="options" href="{{route('clientes')}}">Clientes</a>
     <a class="options" href="{{route('atendimentos')}}">Atendimentos</a>
+    <a class="options" href="{{route('calendario')}}">Calendário</a>
+
     @if(Auth::user()->admin == 1)
     <a class="options" href="{{route('colaboradores')}}">Colaboradores</a>
     @endif

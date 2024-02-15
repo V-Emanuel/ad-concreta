@@ -28,7 +28,7 @@
     <footer class="dashboard-footer">
         <div class="dashboard-footer-logo">
             <x-vg-nome/>
-            <p>Advogados Associados</p>
+            <p>ADVOGADOS ASSOCIADOS</p>
         </div>
     </footer>
     </div>
