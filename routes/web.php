@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgendamentoController;
 use App\Http\Controllers\HeaderViewsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/dashboard', [HeaderViewsController::class, 'dashboardView'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/clientes', [HeaderViewsController::class, 'clientsView'])->middleware(['auth', 'verified'])->name('clientes');
 Route::get('/atendimentos', [HeaderViewsController::class, 'appointmentsView'])->middleware(['auth', 'verified'])->name('atendimentos');
 Route::get('/clientes/{id}', [HeaderViewsController::class, 'clientIdView'])->middleware(['auth', 'verified'])->name('clienteId');
@@ -35,10 +37,7 @@ Route::post('/cliente', [ClientController::class, 'create'])->middleware(['auth'
 Route::post('/clienteDoc', [ClientController::class, 'updateDocument'])->middleware(['auth', 'verified'])->name('cliente.doc');
 Route::post('/clienteObs', [ClientController::class, 'updadeObservations'])->middleware(['auth', 'verified'])->name('cliente.obs');
 Route::post('/clienteImg', [ClientController::class, 'updateImage'])->middleware(['auth', 'verified'])->name('cliente.img');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/agendamento', [AgendamentoController::class, 'store'])->middleware(['auth', 'verified'])->name('agendamento.post');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -33,23 +33,30 @@
         <div class="event-date">12th december 2022</div>
       </div>
       <div class="events"></div>
-      <form class="add-event-wrapper">
+
+      <form class="add-event-wrapper" method="POST" action="{{ route('agendamento.post') }}">
+        @csrf
         <div class="add-event-header">
-          <div class="title">Adicionar Evento</div>
+          <div class="title">Add Event</div>
           <i class="fas fa-times close"></i>
         </div>
         <div class="add-event-body">
           <div class="add-event-input">
-            <input type="text" placeholder="Descrição" class="event-name" />
+            <input type="text" placeholder="Event Name" class="event-name" />
           </div>
           <div class="add-event-input">
-            <input type="text" placeholder="Horário" class="event-time-from" />
+            <input type="text" placeholder="Event Time From" class="event-time-from" />
+          </div>
+          <div class="add-event-input">
+            <input type="text" placeholder="Event Time To" class="event-time-to" />
           </div>
         </div>
         <div class="add-event-footer">
-          <button type="submit" class="add-event-btn">Adicionar Evento</button>
+          <button type="submit" class="add-event-btn">Add Event</button>
         </div>
       </form>
+
+
     </div>
     <button class="add-event">
       <i class="fas fa-plus"></i>

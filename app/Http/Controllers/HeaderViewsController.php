@@ -13,6 +13,24 @@ use GuzzleHttp\Client;
 
 class HeaderViewsController extends Controller
 {
+
+    public function dashboardView()
+    {
+        $clientes = Cliente::all();
+        $quantClientes = count($clientes);
+        $atendimentos = Atendimento::all();
+        $colaboradores = count( User::where('admin', 0)->get());
+        $documentos = 0;
+        
+
+        foreach ($clientes as $cliente) {
+
+            $documentos = $documentos + count($cliente->documentos);
+
+        }
+
+        return view("dashboard", compact("documentos", "quantClientes", "atendimentos", "colaboradores"));
+    }
     public function appointmentsView()
     {
         $atendimentos = Atendimento::all();

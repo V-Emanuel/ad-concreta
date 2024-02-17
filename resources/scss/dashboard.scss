@@ -49,19 +49,52 @@
 
             li {
                 width: 23%;
-                height: 130px;
+                height: 110px;
                 border-radius: 6px;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                box-sizing: border-box;
+                padding: 20px 30px;
+
+                .service-icon{
+                    width: 20%;
+                    margin-right: 14px;
+                    display: flex;
+                    align-items: center;
+                }
+
+                :nth-child(2){
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    font-family: "Metropolis-Black";
+                    font-size: 20px;
+                    line-height: 1.1;
+                    strong{
+                        font-size: 28px;
+                    }
+                }
             }
 
             .service-1 {
                 background-color: #ed6464;
+                :nth-child(2){
+                   color: #fbcece;
+                }
             }
             .service-2 {
                 background-color: #00b4cc;
+                :nth-child(2){
+                   color: #bdf1f7;
+                }
             }
             .service-3 {
                 background-color: #cc883a;
+                :nth-child(2){
+                    color: #ead4bb;
+                 }
             }
             .service-4 {
                 background-color: #a14016;

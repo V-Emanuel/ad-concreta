@@ -40,29 +40,40 @@
             "Dezembro",
         ];
 
-        // const eventsArr = [
-        //   {
-        //     day: 13,
-        //     month: 11,
-        //     year: 2022,
-        //     events: [
-        //       {
-        //         title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
-        //         time: "10:00 AM",
-        //       },
-        //       {
-        //         title: "Event 2",
-        //         time: "11:00 AM",
-        //       },
-        //     ],
-        //   },
-        // ];
-
-        const eventsArr = [];
+        const eventsArr = [
+          {
+            day: 13,
+            month: 02,
+            year: 2024,
+            events: [
+              {
+                title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
+                time: "10:00 AM",
+              },
+              {
+                title: "Event 2",
+                time: "11:00 AM",
+              },
+            ],
+          },{
+            day: 13,
+            month: 02,
+            year: 2024,
+            events: [
+              {
+                title: "Event 57 lorem ipsun dolar sit genfa tersd dsad ",
+                time: "12:00 AM",
+              },
+              {
+                title: "Event 2",
+                time: "13:00 AM",
+              },
+            ],
+          },
+        ];
+        
         getEvents();
-        console.log(eventsArr);
 
-        //function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
         function initCalendar() {
             const firstDay = new Date(year, month, 1);
             const lastDay = new Date(year, month + 1, 0);

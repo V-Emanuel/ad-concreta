@@ -9,6 +9,8 @@ class AgendamentoController extends Controller
 {
     public function store(Request $request)
     {
+
+        dd('DADOS DO AGENDAMENO', $request->all());
         Agendamento::create($request->all());
 
         return redirect()->back()->with('success', 'Agendamento salvo!');
