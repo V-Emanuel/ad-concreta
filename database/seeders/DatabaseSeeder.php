@@ -21,11 +21,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UsersSeeder::class, 
-            CidadesSeeder::class,
-            RamosSeeder::class,
-            AtendimentosSeeder::class,
-            ClientesSeeder::class,
-            AgendamentosSeeder::class
         ]);
     }
 }
