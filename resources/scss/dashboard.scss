@@ -1,4 +1,5 @@
 @import "./variables";
+
 .dashboard-main-container {
     width: 100%;
     height: max-content;
@@ -167,7 +168,7 @@
                         font-size: 28px;
                         font-family: "Montserrat-Bold";
 
-                        li{
+                        li {
                             display: flex;
                             align-items: center;
 
@@ -178,8 +179,8 @@
                                 display: flex;
                                 align-items: center;
                             }
-                            
-                            :nth-child(1){
+
+                            :nth-child(1) {
                                 width: 50px;
                                 margin-right: 20px;
                             }
@@ -225,6 +226,78 @@
                 font-family: "Futura-Medium";
                 font-size: 13px;
                 color: #fff;
+            }
+        }
+    }
+}
+
+@media (max-width: 1400px) {
+    .dashboard-main-container {
+        .dashboard-container {
+            h1 {
+                border-bottom-width: 1px;
+                font-size: 20px;
+            }
+
+            .dashboard-updates {
+                width: 100%;
+                height: max-content;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .dashboard-schedules,
+                .dashboard-calendar {
+                    height: 320px;
+                }
+            }
+
+            .dashboard-movements {
+                .dashboard-records,
+                .dashboard-notifications {
+                    height: 320px;
+
+                    h2 {
+                        font-size: 22px;
+                    }
+                }
+
+                .dashboard-records {
+                    .appointments-metrics {
+                        .all-appointments {
+                            font-size: 68px;
+                        }
+
+                        .appointments-per-date {
+                            font-size: 22px;
+
+                            li {
+                                strong {
+                                    font-size: 28px;
+                                    margin-right: 8px;
+                                }
+
+                                :nth-child(1) {
+                                    width: 40px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .dashboard-footer {
+            height: 170px;
+
+            .dashboard-footer-logo {
+                :nth-child(1) {
+                    width: 200px;
+                }
+
+                :nth-child(2) {
+                    font-size: 10px;
+                }
             }
         }
     }
