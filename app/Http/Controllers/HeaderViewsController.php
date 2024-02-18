@@ -9,7 +9,6 @@ use App\Models\Cidade;
 use App\Models\Ramo;
 use App\Models\Cliente;
 use GuzzleHttp\Client;
-use App\Models\Agendamento;
 use Carbon\Carbon;
 
 
@@ -21,6 +20,7 @@ class HeaderViewsController extends Controller
         $clientes = Cliente::all();
         $quantClientes = count($clientes);
         $atendimentos = Atendimento::all();
+        $numAtendimentos = count($atendimentos);
         $colaboradores = count(User::where('admin', 0)->get());
         $documentos = 0;
         $processos = 0;
@@ -41,11 +41,11 @@ class HeaderViewsController extends Controller
         $inicioDoMes = Carbon::now()->startOfMonth();
         $fimDoMes = Carbon::now()->endOfMonth();
 
-        $agendamentosDoDia = count(Agendamento::whereDate('data', Carbon::today())->get());
-        $agendamentosDaSemana = count(Agendamento::whereBetween('data', [$inicioDaSemana, $fimDaSemana])->get());
-        $agendamentosDoMes = count(Agendamento::whereBetween('data', [$inicioDoMes, $fimDoMes])->get());
+        $agendamentosDoDia = count(Atendimento::whereDate('created_at', Carbon::today())->get());
+        $agendamentosDaSemana = count(Atendimento::whereBetween('created_at', [$inicioDaSemana, $fimDaSemana])->get());
+        $agendamentosDoMes = count(Atendimento::whereBetween('created_at', [$inicioDoMes, $fimDoMes])->get());
 
-        return view("dashboard", compact("documentos", "quantClientes", "atendimentos", "colaboradores", "processos", "agendamentosDoDia", "agendamentosDaSemana", "agendamentosDoMes"));
+        return view("dashboard", compact("documentos", "quantClientes", "atendimentos", "colaboradores", "processos", "agendamentosDoDia", "agendamentosDaSemana", "agendamentosDoMes", "numAtendimentos"));
     }
     public function appointmentsView()
     {

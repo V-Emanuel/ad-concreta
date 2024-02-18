@@ -1,11 +1,38 @@
 <x-app-layout>
     <div class="dashboard-main-container">
         <div class="dashboard-container">
-            <h1>Agendamentos</h1>
-            <div class="dashboard-updates">
-                <div class="dashboard-schedules">
+            <h1>Movimentações</h1>
+            <div class="dashboard-movements">
+                <div class="dashboard-records">
+                    <h2>Atendimentos</h2>
+                    <div class="appointments-metrics">
+                        <p class="all-appointments">{{$numAtendimentos}}</p>
+                        <ul class="appointments-per-date">
+                            <li> <x-calendar-icon/> <strong>{{$agendamentosDoDia}}</strong>
+                            @if($agendamentosDoDia == 1)
+                            Atendimento
+                            @else
+                            Atendimentos
+                            @endif hoje</li>
+                            <li> <x-calendar-icon/> <strong>{{$agendamentosDaSemana}}</strong>
+                            @if($agendamentosDaSemana == 1)
+                            Atendimento
+                            @else
+                            Atendimentos
+                            @endif essa semana</li>
+                        </li>
+                            <li> <x-calendar-icon/> <strong>{{$agendamentosDoMes}}</strong>
+                            @if($agendamentosDoMes == 1)
+                            Atendimento
+                            @else
+                            Atendimentos
+                            @endif esse mês
+                        </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="dashboard-calendar">
+                <div class="dashboard-notifications">
+                <h2>Notificações</h2>
                 </div>
             </div>
             <h1>Informações Gerais</h1>
@@ -17,9 +44,9 @@
                     <span>
                         <h5><strong>{{$quantClientes}}</strong> <br />
                             @if($quantClientes == 1)
-                            Clente
+                            Cliente
                             @else
-                            Clentes
+                            Clientes
                             @endif
                         </h5>
                     </span>
@@ -68,11 +95,11 @@
                     </span>
                 </li>
             </ul>
-            <h1>Movimentações</h1>
-            <div class="dashboard-movements">
-                <div class="dashboard-records">
+            <h1>Agendamentos</h1>
+            <div class="dashboard-updates">
+                <div class="dashboard-schedules">
                 </div>
-                <div class="dashboard-notifications">
+                <div class="dashboard-calendar">
                 </div>
             </div>
             <h1>Alguma Coisa</h1>
