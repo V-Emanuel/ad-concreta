@@ -53,6 +53,7 @@ class ClientController extends Controller
             'estado_nascimento' => $data['estado_nascimento'] ?? 'null',
             'endereco' => $endereco,
             'url_img' => "",
+            'numero_processo' => "",
             'documentos' => [],
             'observacoes' => [],
             'userId' => Auth::id()

@@ -53,7 +53,20 @@
                         </h5>
                     </span>
                 </li>
-                <li class="service-4"></li>
+                <li class="service-4">
+                    <div class="service-icon">
+                        <x-gavel-icon />
+                    </div>
+                    <span>
+                        <h5><strong>{{$processos}}</strong><br />
+                            @if($processos == 1)
+                            Processo
+                            @else
+                            Processos
+                            @endif
+                        </h5>
+                    </span>
+                </li>
             </ul>
             <h1>Movimentações</h1>
             <div class="dashboard-movements">

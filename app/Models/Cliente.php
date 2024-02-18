@@ -25,6 +25,7 @@ class Cliente extends Model
         'estado_nascimento',
         'endereco',
         'url_img',
+        'numero_processo',
         'documentos',
         'observacoes',
         'userId'

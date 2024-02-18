@@ -68,6 +68,7 @@ class ClientesSeeder extends Seeder
                 'documentos' => json_encode($documentos),
                 'observacoes' => json_encode($observacoes),
                 'url_img' => "",
+                'numero_processo' => "",
                 'userId' => rand(1, 5),
                 'created_at' => $date,
                 'updated_at' => $date,

@@ -98,6 +98,12 @@
             }
             .service-4 {
                 background-color: #a14016;
+                .service-icon{
+                    width: 28%;
+                }
+                :nth-child(2){
+                    color: #f0ccbd;
+                 }
             }
         }
 
